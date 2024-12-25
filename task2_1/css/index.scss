@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Convergence&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Quicksand:wght@300..700&display=swap');
+
+.page-style {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    background-color: #b434eb;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 100px;
+    font-family: "Convergence", serif;
+}
+
+.background-title {
+    background-color: black;
+    text-align: center;
+    color: white;
+    padding: 25px;
+    font-size: 50px;
+}
+
+.background-external-title {
+    @extend .background-title;
+}
+
+.background-internal-title {
+    @extend .background-title;
+    color: #b434eb;
+}
+
+.button {
+    @extend .background-title;
+    border: 5px solid black;
+    font-size: 30px;
+    font-weight: 700;
+    padding: 25px 0px 25px 0px;
+    width: 220px;
+    border-radius: 15px;
+
+    &:active {
+        background-color: transparent;
+        color: black;
+    }
+}
+
+.fox-image {
+    position: absolute;
+    top: 22%;
+    left: 60%;
+    background-image: url(../images/fox.png);
+    background-size: cover;
+    background-position: center;
+    width: 120px;
+    height: 120px;
+}
