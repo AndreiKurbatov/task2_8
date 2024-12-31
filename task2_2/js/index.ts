@@ -71,10 +71,6 @@ const foxes: Fox[] = [
 
 let isEditModeOn = false;
 
-let dblclickListener: (event: MouseEvent) => void;
-let clickListener: (event: MouseEvent) => void;
-let keydownListener: (event: KeyboardEvent) => void;
-
 const foxesContainer = document.getElementById("foxes-container") as HTMLElement;
 foxesContainer.innerHTML = generateFoxContent(foxes);
 addLikeActiveFunctionality();
@@ -134,9 +130,6 @@ document.getElementById("editor-mode")?.addEventListener("click", () => {
         enableEditingDescription();
     } else {
         editorModeButton.classList.remove('editor-mode-on');
-        document.removeEventListener("click", clickListener);
-        document.removeEventListener("keydown", keydownListener);
-        document.removeEventListener("dblclick", dblclickListener);
     }
 })
 
@@ -190,89 +183,51 @@ function addLikeActiveFunctionality(): void {
 function enableEditingDescription(): void {
     document.querySelectorAll(".fox-description").forEach(foxDescription => {
 
-        dblclickListener = (event: MouseEvent) => {
-            const target = event.target as HTMLElement;
-            const id = target.getAttribute("id");
-            const originalContent = target.textContent || "";
-            const textarea = document.createElement("textarea");
-            textarea.setAttribute("maxlength", "215");
-            textarea.classList.add("fox-description-textarea");
-            textarea.value = originalContent;
-            target.replaceWith(textarea);
-            textarea.focus();
-
-            const saveChanges = () => {
-                const newContent = textarea.value.trim();
-                const newDiv = document.createElement("div");
-                if (id === null) {
-                    throw new Error("fox-description id is not found");
-                }
-                newDiv.id = id;
-                newDiv.className = "fox-description";
-                newDiv.textContent = newContent || originalContent;
-                textarea.replaceWith(newDiv);
-                enableEditingDescription();
-            }
-
-            clickListener = (event: MouseEvent) => {
-                const target = event.target as HTMLElement;
-                const body = document.getElementById("body") as HTMLElement;
-                if (body.contains(target) && !textarea.contains(target)) {
-                    saveChanges();
-                }
-            }
-
-            keydownListener = (event : KeyboardEvent) => {
-                if (event.key === "Enter") {
-                    event.preventDefault();
-                    saveChanges();
-                }
-            };
-        }
-        document.addEventListener("click", clickListener);
-        document.addEventListener("keydown", keydownListener);
-        foxDescription.addEventListener("dblclick", dblclickListener as EventListener);
-
-
-
-        /*
         foxDescription.addEventListener("dblclick", event => {
-            const target = event.target as HTMLElement;
-            const id = target.getAttribute("id");
-            const originalContent = target.textContent || "";
-            const textarea = document.createElement("textarea");
-            textarea.setAttribute("maxlength", "215");
-            textarea.classList.add("fox-description-textarea");
-            textarea.value = originalContent;
-            target.replaceWith(textarea);
-            textarea.focus();
-
-            const saveChanges = () => {
-                const newContent = textarea.value.trim();
-                const newDiv = document.createElement("div");
-                if (id === null) {
-                    throw new Error("fox-description id is not found");
-                }
-                newDiv.id = id;
-                newDiv.className = "fox-description";
-                newDiv.textContent = newContent || originalContent;
-                textarea.replaceWith(newDiv);
-                enableEditingDescription();
-            }
-
-            document.addEventListener("click", (event) => {
+            if (isEditModeOn) {
                 const target = event.target as HTMLElement;
-                const body = document.getElementById("body") as HTMLElement;
-                if (body.contains(target) && !textarea.contains(target)) {
-                    saveChanges();
+                const id = target.getAttribute("id");
+                const originalContent = target.textContent || "";
+                const textarea = document.createElement("textarea");
+                textarea.setAttribute("maxlength", "215");
+                textarea.classList.add("fox-description-textarea");
+                textarea.value = originalContent;
+                target.replaceWith(textarea);
+                textarea.focus();
+
+                const saveChanges = () => {
+                    const newContent = textarea.value.trim();
+                    const newDiv = document.createElement("div");
+                    if (id === null) {
+                        throw new Error("fox-description id is not found");
+                    }
+                    newDiv.id = id;
+                    newDiv.className = "fox-description";
+                    newDiv.textContent = newContent || originalContent;
+                    textarea.replaceWith(newDiv);
+                    enableEditingDescription();
                 }
-            });
-            textarea.addEventListener("keydown", (e) => {
-                if (e.key === "Enter") {
-                    e.preventDefault();
-                    saveChanges();
-                }
-            });
-        })*/
+
+                document.addEventListener("click", (event) => {
+                    if (isEditModeOn) {
+                        const editorMode = document.getElementById("editor-mode") as HTMLElement;
+                        const target = event.target as HTMLElement;
+                        const body = document.getElementById("body") as HTMLElement;
+                        if ((body.contains(target) || editorMode.contains(target)) && !textarea.contains(target)) {
+                            saveChanges();
+                        }
+                    }
+                });
+                textarea.addEventListener("keydown", (e) => {
+                    if (isEditModeOn) {
+                        if (e.key === "Enter") {
+                            e.preventDefault();
+                            saveChanges();
+                        }
+                    }
+                });
+            }
+        })
+
     })
 }
