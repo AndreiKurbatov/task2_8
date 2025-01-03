@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>HTML form page</title>
+</head>
+<body id="body-id" class="form-default-style">
+    <div class="main-header-page">
+        Sign up for a food ticket at the West Norilsk purification plant
+    </div>
+    <form class="main-form-container" action="https://my-backend-part.org" method="POST">
+        <div class="first-name-input-box">
+            <input type="text" name="firstName" id="firstName" class="form-flexible-input" placeholder="Andrei">
+            <label for="firstName" class="form-flexible-label">First name</label>
+        </div>
+        <div class="last-name-input-box">
+            <input type="text" name="lastName" id="lastName" class="form-flexible-input" placeholder=" ">
+            <label for="lastName" class="form-flexible-label">Last name:</label>
+        </div>
+        <div class="email-input-box">
+            <input type="email" name="email" id="email" class="form-flexible-input" placeholder=" ">
+            <label for="email" class="form-flexible-label">Email:</label>
+        </div>
+        <div class="password-input-box">
+            <input type="password" name="password" id="password" class="form-flexible-input" placeholder=" ">
+            <label for="password" class="form-flexible-label">Password:</label>
+        </div>
+        <div class="confirm-password-input-box">
+            <input type="password" name="password-confirm" id="password-confirm" class="form-flexible-input" placeholder=" ">
+            <label for="password-confirm" class="form-flexible-label">Confirm password:</label>
+        </div>
+        <div class="gender-input-box">
+            <legend class="gender-legend">Gender</legend>
+            <div class="gender-radio-container">
+                <input class="gender-radio-input" type="radio" name="gender" id="male" value="M">
+                <label class="gender-radio-label" for="male">Male</label>
+                <input class="gender-radio-input" type="radio" name="gender" id="female" value="F">
+                <label class="gender-radio-label" for="female">Female</label>
+            </div>
+        </div>
+        <div class="hobbies-input-box">
+            <legend class="hobbies-legend">Hobbies</legend>
+            <div class="hobby-radio-container">
+                <input class="hobby-radio-input" type="checkbox" name="hobbies" id="music" value="music">
+                <label class="hobby-radio-label" for="music">Music</label>
+                <input class="hobby-radio-input" type="checkbox" name="hobbies" id="sports" value="sports">
+                <label class="hobby-radio-label" for="sports">Sports</label>
+                <input class="hobby-radio-input" type="checkbox" name="hobbies" id="travel" value="travel">
+                <label class="hobby-radio-label" for="travel">Travel</label>
+                <input class="hobby-radio-input" type="checkbox" name="hobbies" id="movies" value="movies">
+                <label class="hobby-radio-label" for="movies">Movies</label>
+            </div>
+        </div>
+        <div class="age-input-box">
+            <input type="number" name="age" id="age" class="form-flexible-input form-flexible-input-age" placeholder=" ">
+            <label for="age" class="form-flexible-label">Age</label>
+        </div>
+        <div class="upload-picture-input-box">
+            <input type="file" class="profile-picture-input"/>
+        </div>
+        <div class="bio-input-box">
+            <label for="bio">Bio:</label>
+            <textarea name="bio" class="main-bio-input" id="bio" cols="68" rows="3" placeholder="    Why do you need the ticket?"></textarea>
+        </div>
+        <div class="income-source-input-box">
+            <legend class="income-source-legend" for="incomeSource">Source of income:</legend>
+            <div class="income-source-dropdown-el">
+                <input type="radio" class="income-source-input" name="incomeSource" value="wage" checked="checked" id="sort-relevance">
+                <label for="sort-relevance" class="income-source-label">Salary or Wages</label>
+                <input type="radio" class="income-source-input" name="incomeSource" value="freelancing" id="sort-best">
+                <label for="sort-best" class="income-source-label">Freelancing</label>
+                <input type="radio" class="income-source-input" name="incomeSource" value="investments" id="sort-low">
+                <label for="sort-low" class="income-source-label">Investments</label>
+                <input type="radio" class="income-source-input" name="incomeSource" value="rentalIncome" id="sort-high">
+                <label for="sort-high" class="income-source-label">Rental Income</label>
+                <input type="radio" class="income-source-input" name="incomeSource" value="businessProfits" id="sort-brand">
+                <label for="sort-brand" class="income-source-label">Business Profits</label>
+                <input type="radio" class="income-source-input" name="incomeSource" value="royalties" id="sort-name">
+                <label for="sort-name" class="income-source-label">Royalties</label>
+            </div>
+        </div>
+        <div class="income-amount-input-box range">
+            <div class="income-range range-slider">
+                <input type="range" class="range-input" step="500">
+            </div>
+            <div class="income-range range-value">
+                <label class="your-income-label">Your income</label>
+                <span class="range-placeholder"></span>
+            </div>
+        </div>
+        <div class="submit-button-input-box">
+            <button class="main-submit-button">
+                <span class="main-submit-title">Submit</span>
+                <div class="success">
+                    <svg class="main-submit-svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                        viewBox="0 0 29.756 29.756" style="enable-background:new 0 0 29.756 29.756;"
+                        xml:space="preserve">
+                        <path
+                            d="M29.049,5.009L28.19,4.151c-0.943-0.945-2.488-0.945-3.434,0L10.172,18.737l-5.175-5.173   c-0.943-0.944-2.489-0.944-3.432,0.001l-0.858,0.857c-0.943,0.944-0.943,2.489,0,3.433l7.744,7.752   c0.944,0.943,2.489,0.943,3.433,0L29.049,8.442C29.991,7.498,29.991,5.953,29.049,5.009z" />
+                    </svg>
+                </div>
+            </button>
+        </div>
+    </form>
+    <script type="module" src="./js/index.js"></script>
+</body>
+</html>
