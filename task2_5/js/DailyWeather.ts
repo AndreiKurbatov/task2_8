@@ -1,6 +1,8 @@
-interface DailyWeather {
+export default interface DailyWeather {
     dayName: string;
-    weather: string;
+    dayWeather: string;
     dayTemp: number;
     nightTemp: number;
+    nightWeather: string;
+    cityName: string;
 }

@@ -1,20 +1,14 @@
 export async function getCityWeather(cityName) {
     const apiKey = "08e9e3b150d3d7e4d46a0042a24d3989"; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-    const geoApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`;
+    let location;
     try {
-        let geoResponse;
         if (!cityName || cityName.trim() === "") {
             console.log("City name is empty. Fetching user's current location...");
             const userPosition = await getUserPosition();
-            geoResponse = {
-                name: "Your location",
-                lat: userPosition.lat,
-                lon: userPosition.lon,
-                country: "Your country"
-            };
             console.log("The user current location: lat: " + userPosition.lat + " and lon: " + userPosition.lon);
-            console.log("Try to get location name by coordinates");
-            const apiUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${geoResponse.lat}&lon=${geoResponse.lon}&limit=1&appid=${apiKey}`;
+            console.log("Try to get location name by the coordinates");
+            const apiUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${userPosition.lat}&lon=${userPosition.lon}&limit=1&appid=${apiKey}`;
+            console.log("Fetching the city by the coordinates...");
             const response = await fetch(apiUrl);
             if (!response.ok) {
                 throw new Error(`HTTP Error: ${response.status}`);
@@ -24,57 +18,58 @@ export async function getCityWeather(cityName) {
                 console.error("No location found for the provided coordinates.");
                 return null;
             }
-            geoResponse.name = data[0].name;
-            console.log("The location is " + geoResponse.name);
+            location = data[0];
+            console.log(`City found: ${location.name}, Lat: ${location.lat}, Lon: ${location.lon}`);
         }
         else {
+            const geoApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`;
             console.log("Fetching city coordinates...");
             const response = await fetch(geoApiUrl);
             if (!response.ok) {
                 throw new Error(`HTTP Error: ${response.status}`);
             }
-            const geoData = await response.json();
-            if (geoData.length === 0) {
-                console.error("City not found.");
+            const data = await response.json();
+            if (data.length === 0) {
+                console.error("No location found for the provided coordinates.");
                 return null;
             }
-            const { lat, lon, name } = geoData[0];
-            console.log(`City found: ${name}, Lat: ${lat}, Lon: ${lon}`);
-            geoResponse = geoData[0];
+            location = data[0];
+            console.log(`City found: ${location.name}, Lat: ${location.lat}, Lon: ${location.lon}`);
         }
-        return await fetchWeather(geoResponse);
+        return await fetchWeeklyForecast(location.lat, location.lon, location.name);
     }
     catch (error) {
         console.error("Error during API call:", error.message);
         return null;
     }
 }
-async function fetchWeather(geoResponse) {
-    const apiKey = "08e9e3b150d3d7e4d46a0042a24d3989"; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
-    const apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${geoResponse.lat}&lon=${geoResponse.lon}&exclude=minutely,hourly,alerts&units=metric&appid=${apiKey}`;
+async function fetchWeeklyForecast(lat, lon, cityName) {
+    const apiKey = "08e9e3b150d3d7e4d46a0042a24d3989";
+    const apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=${apiKey}`;
     try {
-        console.log("Fetching weather data...");
+        console.log("Fetching weekly weather forecast...");
         const response = await fetch(apiUrl);
         if (!response.ok) {
             throw new Error(`HTTP Error: ${response.status}`);
         }
         const data = await response.json();
-        const currentTemp = Math.round(data.current.temp);
-        const currentWeather = data.current.weather[0].description;
-        const nightTemp = Math.round(data.daily[0].temp.night);
-        const nightWeather = data.daily[0].weather[0].description;
-        const cityName = geoResponse.name;
-        console.log("Weather data fetched successfully.");
-        return {
-            currentTemp,
-            currentWeather,
-            nightTemp,
-            nightWeather,
-            cityName
-        };
+        const forecast = data.daily.slice(0, 7).map((day) => {
+            const date = new Date(day.dt * 1000);
+            const dayName = date.toLocaleDateString("en-US", { weekday: "long" });
+            return {
+                dayName,
+                dayWeather: day.weather[0].description,
+                dayTemp: Math.round(day.temp.day),
+                nightTemp: Math.round(day.temp.night),
+                nightWeather: day.weather[0].description,
+                cityName
+            };
+        });
+        console.log("Forecast data fetched successfully.");
+        return forecast;
     }
     catch (error) {
-        console.error("Error while fetching weather data:", error.message);
+        console.error("Error while fetching weekly forecast:", error.message);
         return null;
     }
 }
