@@ -1,4 +1,5 @@
 import DailyWeather from "./DailyWeather.js"
+//import dotenv from "dotenv";
 
 export async function getCityWeather(cityName: string): Promise<DailyWeather[] | null> {
     const apiKey: string = "08e9e3b150d3d7e4d46a0042a24d3989"; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
@@ -54,7 +55,7 @@ export async function getCityWeather(cityName: string): Promise<DailyWeather[] |
 
 async function fetchWeeklyForecast(lat: number, lon: number, cityName: string): Promise<DailyWeather[] | null> {
     const apiKey: string = "08e9e3b150d3d7e4d46a0042a24d3989";
-    const apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=${apiKey}`;
+    const apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,alerts&units=metric&appid=${apiKey}`;
 
     try {
         console.log("Fetching weekly weather forecast...");
@@ -65,17 +66,31 @@ async function fetchWeeklyForecast(lat: number, lon: number, cityName: string): 
 
         const data = await response.json();
 
-        const forecast = data.daily.slice(0, 7).map((day: any) => {
+        const forecast = data.daily.slice(0, 7).map((day: any, index: number) => {
             const date = new Date(day.dt * 1000);
             const dayName = date.toLocaleDateString("en-US", { weekday: "long" });
 
+            let nightWeather = "No info";
+            if (index === 0) {
+                const hourlyData = data.hourly.filter((hour: any) => {
+                    const hourDate = new Date(hour.dt * 1000);
+                    return (
+                        hourDate.getUTCDate() === date.getUTCDate() &&
+                        (hourDate.getUTCHours() >= 18 || hourDate.getUTCHours() < 6)
+                    );
+                });
+
+                nightWeather = hourlyData.map((hour: any) => hour.weather[0].description)[0] || "No info";
+            }
+
             return {
-                dayName,
+                dayName: dayName,
                 dayWeather: day.weather[0].description,
                 dayTemp: Math.round(day.temp.day),
                 nightTemp: Math.round(day.temp.night),
-                nightWeather: day.weather[0].description,
-                cityName
+                nightWeather: nightWeather,
+                cityName: cityName,
+                weatherIconId: day.weather[0].id,
             };
         });
 
@@ -86,6 +101,8 @@ async function fetchWeeklyForecast(lat: number, lon: number, cityName: string): 
         return null;
     }
 }
+
+
 
 async function getUserPosition(): Promise<{ lat: number; lon: number }> {
     return new Promise((resolve, reject) => {

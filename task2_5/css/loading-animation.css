@@ -1,0 +1,19 @@
+.loader {
+  display: none;
+  height: 30px;
+  aspect-ratio: 6;
+  --c: #ffffff00 64%,#ffffff 66% 98%,#ffffff00 101%;
+  background: radial-gradient(35% 146% at 50% 159%, var(--c)) 0 0, radial-gradient(35% 146% at 50% -59%, var(--c)) 25% 100%;
+  background-size: 33.3333333333% 50%;
+  background-repeat: repeat-x;
+  -webkit-clip-path: inset(0 50%);
+          clip-path: inset(0 50%);
+  animation: l3 1s infinite linear;
+}
+
+@keyframes l3 {
+  90%, to {
+    -webkit-clip-path: inset(0);
+            clip-path: inset(0);
+  }
+}/*# sourceMappingURL=loading-animation.css.map */

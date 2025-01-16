@@ -5,4 +5,5 @@ export default interface DailyWeather {
     nightTemp: number;
     nightWeather: string;
     cityName: string;
+    weatherIconId: number;
 }

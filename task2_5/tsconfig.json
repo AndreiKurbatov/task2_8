@@ -1,12 +1,13 @@
 {
-    "compilerOptions": {
-      "target": "es2017",
-      "module": "esnext",
-      "outDir": "./js",
-      "rootDir": "./js",
-      "strict": true,
-      "lib": ["es2017", "dom"]
-    },
-    "include": ["js/**/*.ts"],
-    "exclude": ["dist"]
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "esnext",
+    "outDir": "./js",
+    "rootDir": "./ts",
+    "strict": true,
+    "lib": ["es2017", "dom"]
+  },
+  "include": ["ts/**/*.ts"],
+  "exclude": ["dist"]
 }
+
