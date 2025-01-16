@@ -1,0 +1,600 @@
+@import url('https://fonts.googleapis.com/css2?family=Convergence&display=swap');
+
+:root {
+    --primary-color: #18ffff;
+    --secondary-color: #060b23;
+    --tertiary-color: #fff;
+    --quaternary-color: #adffff;
+    --primary-border-design: 2px solid #e1e5ee;
+    --primary-border-radius: 0.5rem;
+    --secondary-border-radius: 0.25rem;
+}
+
+.form-default-style,
+.form-default-style *,
+.form-default-style *::after,
+.form-default-style *::before {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    background-color: var(--secondary-color);
+    color: var(--tertiary-color);
+    font-family: 'Convergence', sans-serif;
+    outline: none;
+}
+
+/**************************/
+
+.main-header-page {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 100px;
+    height: 160px;
+}
+
+/*************************/
+
+.main-form-container {
+    display: grid;
+    grid-template-columns: repeat(2, 440px);
+    grid-template-rows: repeat(7, 45px);
+    justify-content: center;
+    gap: 30px;
+}
+
+.submit-button-input-box,
+.age-input-box,
+.upload-picture-input-box,
+.income-amount-input-box,
+.income-source-input-box,
+.gender-input-box,
+.confirm-password-input-box,
+.password-input-box,
+.email-input-box,
+.last-name-input-box,
+.first-name-input-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.income-amount-input-box {
+    transform: translateX(-16%);
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.email-input-box {
+    grid-column: 1 / 3;
+}
+
+.submit-button-input-box {
+    display: flex;
+    justify-content: end;
+    grid-column: 1 / 3;
+}
+
+.form-flexible-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: var(--primary-border-design);
+    border-radius: var(--primary-border-radius);
+    font-family: inherit;
+    font-size: inherit;
+    padding: 12px;
+    background: none;
+    transition: all 160ms ease-in;
+
+    &:hover {
+        border-color: var(--quaternary-color);
+    }
+
+    &:focus {
+        border-color: var(--primary-color);
+    }
+}
+
+.form-flexible-label {
+    position: absolute;
+    left: 0.9rem;
+    top: 0.8rem;
+    padding: 0 0.5rem;
+    cursor: text;
+    transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+}
+
+.form-flexible-input:focus~.form-flexible-label,
+.form-flexible-input:not(:placeholder-shown).form-flexible-input:not(:focus)~.form-flexible-label {
+    top: -0.5rem;
+    font-size: 0.8rem;
+    left: 0.8rem;
+}
+
+/**************gender-input-box and hobbies-input-box***************/
+
+.hobby-radio-container,
+.gender-radio-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 50px;
+}
+
+.hobby-radio-container {
+    justify-content: start;
+    gap: 0px;
+}
+
+.hobby-radio-input,
+.gender-radio-input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+
+.hobby-radio-label,
+.gender-radio-label {
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    padding: 1rem 1rem 1rem 2rem;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.25, 0.25, 0.5, 1.9);
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 1.5rem;
+        height: 1.5rem;
+        background: transparent;
+        border: var(--primary-border-design);
+        border-radius: var(--secondary-border-radius);
+        z-index: -1;
+        transition: all 0.25s cubic-bezier(0.25, 0.25, 0.5, 1.9);
+    }
+}
+
+.hobby-radio-input+.hobby-radio-label::before,
+.gender-radio-input+.gender-radio-label::before {
+    border-radius: 2rem;
+}
+
+.hobby-radio-input:checked+.hobby-radio-label,
+.gender-radio-input:checked+.gender-radio-label {
+    padding-left: 1em;
+    color: var(--secondary-color);
+    font-weight: 700;
+
+    &::before {
+        width: 100%;
+        height: 100%;
+        background: var(--primary-color);
+        border: 0;
+        box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+    }
+}
+
+.hobby-radio-label:hover,
+.gender-radio-label:hover {
+    color: var(--quaternary-color);
+}
+
+.hobbies-legend,
+.gender-legend {
+    margin-left: 40px;
+    margin-bottom: 15px;
+}
+
+/********* income-source-input-box **********/
+
+.income-source-legend {
+    margin-left: 40px;
+    margin-bottom: 10px;
+}
+
+.income-source-input-box {
+    transform: translateY(180%);
+}
+
+.income-source-dropdown-el {
+    font-size: 24px;
+    position: relative;
+    display: inline-block;
+    min-height: 2em;
+    max-height: 2em;
+    overflow: hidden;
+    top: 0.5em;
+    cursor: pointer;
+    white-space: nowrap;
+    color: var(--tertiary-color);
+    border: var(--primary-border-design);
+    border-radius: var(--primary-border-radius);
+    background-color: var(--secondary-color);
+    transition: 0.25s all ease-in-out;
+
+    &:not(.expanded):hover {
+        color: var(--quaternary-color);
+        border-color: var(--quaternary-color);
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        right: 0.8em;
+        top: 0.9em;
+        border: 0.3em solid var(--tertiary-color);
+        border-color: var(--tertiary-color) transparent transparent transparent;
+        transition: 0.25s all ease-in-out;
+    }
+
+    &:hover::after {
+        border-color: var(--quaternary-color) transparent transparent transparent;
+    }
+
+    &.expanded {
+        border: 2px solid var(--primary-color);
+        background: var(--secondary-color);
+        border-radius: 0.25em;
+        padding: 0;
+        box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 5px 0px;
+        max-height: 15em;
+
+        &::after {
+            transform: rotate(-180deg);
+            top: 0.55em;
+        }
+    }
+}
+
+.income-source-input {
+    display: inline-block;
+    position: absolute;
+    opacity: 0.01;
+}
+
+.income-source-label {
+    border-top: 2px solid var(--tertiary-color);
+    display: block;
+    line-height: 2em;
+    padding-left: 1em;
+    padding-right: 3em;
+    cursor: pointer;
+    position: relative;
+    transition: 0.25s color ease-in-out;
+
+    &:nth-child(2) {
+        margin-top: 2em;
+    }
+}
+
+.income-source-input:checked+.income-source-label {
+    display: block;
+    border-top: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    &:nth-child(2) {
+        margin-top: 0;
+        position: relative;
+    }
+}
+
+/****************** income-amount-input-box *******************/
+
+.range-slider {
+    width: 300px;
+}
+
+.range-value {
+    width: 220px;
+    margin-left: 45px;
+    text-align: center;
+    border-left: #e6e4e4 1px solid;
+}
+
+.income-range {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.your-income-label {
+    text-transform: uppercase;
+    color: var(--tertiary-color);
+    margin-bottom: 5px;
+
+    &.range-slider {
+        margin-bottom: 10px;
+    }
+}
+
+.range-placeholder {
+    font-weight: 600;
+    color: var(--tertiary);
+}
+
+.range-input {
+    -webkit-appearance: none;
+    height: 13px;
+    border-radius: 6px;
+
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #7a00ff;
+        border: var(--tertiary-color) 5px solid;
+        cursor: pointer;
+        -webkit-transition: .15s ease-in-out;
+        transition: .15s ease-in-out;
+
+        &:hover {
+            background: #f0932b;
+        }
+    }
+
+    &::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        border: 0;
+        border-radius: 50%;
+        background: #f0932b;
+        border: #f9ca24 5px solid;
+        cursor: pointer;
+        -webkit-transition: .15s ease-in-out;
+        transition: .15s ease-in-out;
+
+        &:hover {
+            background: #f9ca24;
+        }
+    }
+
+    &::-moz-focus-inner,
+    &::-moz-focus-outer {
+        border: 0;
+    }
+}
+
+.range {
+    display: flex;
+    width: 600px;
+}
+
+/********* upload-picture-input-box **********/
+
+.upload-picture-input-box {
+    margin-top: 30px;
+    display: grid;
+    justify-content: center;
+}
+
+.profile-picture-input::file-selector-button {
+    height: 40px;
+    cursor: pointer;
+    background-color: var(--secondary-color);
+    color: var(--tertiary-color);
+    border: var(--primary-border-design);
+    margin-right: 16px;
+    transition: background-color 0.25ms;
+    border-radius: 0.5rem;
+
+    &:hover {
+        color: var(--quaternary-color);
+        border-color: var(--quaternary-color);
+    }
+
+    &:active {
+        color: var(--primary-color);
+        border-color: var(--primary-color);
+    }
+}
+
+/************** age-input-box **************/
+
+.age-input-box {
+    transform: translateY(60%);
+}
+
+.form-flexible-input-age::-webkit-outer-spin-button,
+.form-flexible-input-age::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/************* bio-input-box ***************/
+
+.bio-input-box {
+    grid-column: 1 / 3;
+    margin-top: 20px;
+}
+
+.main-bio-input {
+    background-color: var(--secondary-color);
+    color: var(--tertiary-color);
+    font-size: 24px;
+    border: var(--primary-border-design);
+    border-radius: var(--primary-border-radius);
+
+    &:hover {
+        border-color: var(--quaternary-color);
+    }
+
+    &:focus {
+        border-color: var(--primary-color);
+    }
+}
+
+/********** submit-button-input-box *************/
+
+.wrapper {
+    position: relative;
+}
+
+.main-submit-button {
+    position: absolute;
+    width: 170px;
+    height: 40px;
+    margin-top: 100px;
+    line-height: 1;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 3px solid #8C82FC;
+    color: var(--tertiary-color);
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all .35s;
+
+    &.is_active {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.main-submit-title {
+    opacity: 1;
+    visibility: visible;
+    transition: all .35s;
+}
+
+.success {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--tertiary-color);
+    border-radius: 50%;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .35s;
+}
+
+.main-submit-svg {
+    width: 20px;
+    height: 20px;
+    fill: yellowgreen;
+    transform-origin: 50% 50%;
+    transform: translateY(-50%) rotate(0deg) scale(0);
+    transition: all .35s;
+}
+
+/************************* validation logic *************************/
+
+.is-required-field {
+    border-color: red;
+    color: red;
+}
+
+@media (max-width: 768px) {
+
+    .main-form-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+    }
+
+    .form-default-style {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .form-flexible-input {
+        height: 50px;
+    }
+
+    .gender-radio-label,
+    .gender-radio-label,
+    .hobbies-input-box {
+        width: 100%;
+    }
+
+    .submit-button-input-box,
+    .age-input-box,
+    .upload-picture-input-box,
+    .income-amount-input-box,
+    .income-source-input-box,
+    .gender-input-box,
+    .confirm-password-input-box,
+    .password-input-box,
+    .email-input-box,
+    .last-name-input-box,
+    .first-name-input-box {
+        margin-bottom: 60px;
+    }
+
+    .submit-button-input-box,
+    .gender-input-box {
+        margin-bottom: 0px;
+    }
+
+    .upload-picture-input-box {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .hobby-radio-container {
+        justify-content: space-between;
+    }
+
+    .bio-input-box {
+        width: 100%;
+        margin-top: 0px;
+    }
+
+    .main-submit-button {
+        margin-top: 0px;
+    }
+
+    .income-source-input-box {
+        transform: translateY(0px);
+        margin-bottom: 0px;
+    }
+
+    .income-source-dropdown-el {
+        left: 50%;
+        transform: translateX(-50%);
+        top: 0%;
+        width: 100%;
+    }
+
+    .income-source-legend {
+        margin-left: 0px;
+        margin-bottom: 30px;
+    }
+
+    .main-bio-input {
+        width: 100%;
+    }
+
+    .hobby-radio-label {
+        margin-left: 0px;
+    }
+
+    .income-amount-input-box {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+    }
+
+    .gender-radio-label {
+        margin-left: 0px;
+    }
+
+}
