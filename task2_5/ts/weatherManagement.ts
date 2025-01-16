@@ -1,8 +1,6 @@
 import DailyWeather from "./DailyWeather.js"
-//import dotenv from "dotenv";
 
 export async function getCityWeather(cityName: string): Promise<DailyWeather[] | null> {
-    const apiKey: string = "08e9e3b150d3d7e4d46a0042a24d3989"; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 
     let location;
     try {
@@ -12,7 +10,7 @@ export async function getCityWeather(cityName: string): Promise<DailyWeather[] |
             console.log("The user current location: lat: " + userPosition.lat + " and lon: " + userPosition.lon);
 
             console.log("Try to get location name by the coordinates");
-            const apiUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${userPosition.lat}&lon=${userPosition.lon}&limit=1&appid=${apiKey}`;
+            const apiUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${userPosition.lat}&lon=${userPosition.lon}&limit=1&appid=${import.meta.env.VITE_API_KEY}`;
             console.log("Fetching the city by the coordinates...");
             const response: Response = await fetch(apiUrl);
             if (!response.ok) {
@@ -29,7 +27,7 @@ export async function getCityWeather(cityName: string): Promise<DailyWeather[] |
 
             console.log(`City found: ${location.name}, Lat: ${location.lat}, Lon: ${location.lon}`);
         } else {
-            const geoApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`;
+            const geoApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${import.meta.env.VITE_API_KEY}`;
             console.log("Fetching city coordinates...");
             const response: Response = await fetch(geoApiUrl);
             if (!response.ok) {
@@ -54,8 +52,7 @@ export async function getCityWeather(cityName: string): Promise<DailyWeather[] |
 }
 
 async function fetchWeeklyForecast(lat: number, lon: number, cityName: string): Promise<DailyWeather[] | null> {
-    const apiKey: string = "08e9e3b150d3d7e4d46a0042a24d3989";
-    const apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,alerts&units=metric&appid=${apiKey}`;
+    const apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,alerts&units=metric&appid=${import.meta.env.VITE_API_KEY}`;
 
     try {
         console.log("Fetching weekly weather forecast...");
