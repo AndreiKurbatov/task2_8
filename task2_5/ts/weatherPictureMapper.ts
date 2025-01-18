@@ -1,19 +1,20 @@
-import WeatherTypeEnum from "./WeatherTypeEnum.js";
+import WeatherTypeConst from "./WeatherTypeConst.js";
 
-export default function getWeatherPictureByWeatherId(weatherId : number) : string {
-    if (weatherId >= WeatherTypeEnum.THUNDERSTORM && weatherId < WeatherTypeEnum.DRIZZLE) {
-        return "./images/thunderstorm.png";
-    } else if (weatherId >= WeatherTypeEnum.DRIZZLE && weatherId < WeatherTypeEnum.RAIN) {
-        return "./images/drops/png";
-    } else if (weatherId >= WeatherTypeEnum.RAIN && weatherId < WeatherTypeEnum.SNOW) {
-        return "./images/rain.png";
-    } else if (weatherId >= WeatherTypeEnum.SNOW && weatherId < WeatherTypeEnum.ATMOSPHERE) {
-        return "./images/snow.png";
-    } else if (weatherId >= WeatherTypeEnum.ATMOSPHERE && weatherId < WeatherTypeEnum.CLEAR) {
-        return "./images/haze.png";
-    } else if (weatherId >= WeatherTypeEnum.CLEAR && weatherId < WeatherTypeEnum.CLOUDS) {
-        return "./images/sun.png";
-    } else {
-        return "./images/cloud.png";
+const weatherImageRanges = [
+    { rangeStart: WeatherTypeConst.THUNDERSTORM, rangeEnd: WeatherTypeConst.DRIZZLE, image: "./images/thunderstorm.png" },
+    { rangeStart: WeatherTypeConst.DRIZZLE, rangeEnd: WeatherTypeConst.RAIN, image: "./images/drops.png" },
+    { rangeStart: WeatherTypeConst.RAIN, rangeEnd: WeatherTypeConst.SNOW, image: "./images/rain.png" },
+    { rangeStart: WeatherTypeConst.SNOW, rangeEnd: WeatherTypeConst.ATMOSPHERE, image: "./images/snow.png" },
+    { rangeStart: WeatherTypeConst.ATMOSPHERE, rangeEnd: WeatherTypeConst.CLEAR, image: "./images/haze.png" },
+    { rangeStart: WeatherTypeConst.CLEAR, rangeEnd: WeatherTypeConst.CLOUDS, image: "./images/sun.png" },
+    { rangeStart: WeatherTypeConst.CLOUDS, rangeEnd: Infinity, image: "./images/cloud.png" },
+];
+
+export default function getWeatherPictureByWeatherCode(weatherCode: number): string {
+    for (const { rangeStart, rangeEnd, image } of weatherImageRanges) {
+        if (weatherCode >= rangeStart && weatherCode < rangeEnd) {
+            return image;
+        }
     }
+    return "./images/zombie.png";
 }

@@ -23,6 +23,5 @@ searchInput.addEventListener("keyup", () => {
 
 export function handleInput(): string {
     const userInput = searchInput!.value.trim() || ""
-    console.log("The city name is " + userInput);
     return userInput;
 }

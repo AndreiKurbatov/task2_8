@@ -1,5 +1,5 @@
 import DailyWeather from './DailyWeather.js';
-import getWeatherPictureByWeatherId from './weatherPictureMapper.js';
+import getWeatherPictureByWeatherCode from './weatherPictureMapper.js';
 
 export function updateCurrentWeatherUI(weatherData: DailyWeather[] | null): void {
     if (weatherData) {
@@ -17,9 +17,7 @@ export function updateCurrentWeatherUI(weatherData: DailyWeather[] | null): void
         currentZoneWeatherElement.textContent = weatherData[0].dayWeather;
         currentZoneNameElement.textContent = weatherData[0].cityName;
         selectedZone.textContent = "Selected: " + weatherData[0].cityName;
-        currentWeatherIcon.src = getWeatherPictureByWeatherId(weatherData[0].weatherIconId);
-    } else {
-        console.log("Could not retrieve weather data.");
+        currentWeatherIcon.src = getWeatherPictureByWeatherCode(weatherData[0].weatherIconId);
     }
 }
 
@@ -36,10 +34,8 @@ export function fetchWeeklyForecast(weatherData: DailyWeather[] | null): void {
             dayWeather.textContent = weatherData[i].dayWeather;
             dayWeatherTemperature.innerHTML = `${weatherData[i].dayTemp}°C`;
             nightWeatherTemperature.innerHTML = `${weatherData[i].nightTemp}°C`;
-            currentWeatherIcon.src = getWeatherPictureByWeatherId(weatherData[i].weatherIconId);
+            currentWeatherIcon.src = getWeatherPictureByWeatherCode(weatherData[i].weatherIconId);
         }
-    } else {
-        console.log("Could not retrieve weather data.");
     }
 }
 
