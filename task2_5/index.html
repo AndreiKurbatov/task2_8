@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/search-bar.css">
+    <link rel="stylesheet" href="./css/current-weather.css">
+    <link rel="stylesheet" href="./css/weekly-forecast.css">
+    <link rel="stylesheet" href="./css/loading-animation.css">
+    <title>Weather widget</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body id="body-id" class="default-page-style">
+    <div class="main-header">foxmind<div class="ed-ending-style">ed</div><div class="ed-ending-square"></div></div>
+    <div class="wrap-search-box">
+        <div class="container">
+            <div class="search-box">
+                <div class="search-icon"><i class="fa fa-search search-icon"></i></div>
+                <form action="" class="search-form">
+                    <input type="text" placeholder="Search" id="search" class="search" autocomplete="off">
+                </form>
+                <svg class="search-border" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" x="0px" y="0px"
+                    viewBox="0 0 671 111" style="enable-background:new 0 0 671 111;" xml:space="preserve">
+                    <path class="border" d="M335.5,108.5h-280c-29.3,0-53-23.7-53-53v0c0-29.3,23.7-53,53-53h280" />
+                    <path class="border" d="M335.5,108.5h280c29.3,0,53-23.7,53-53v0c0-29.3-23.7-53-53-53h-280" />
+                </svg>
+                <div id="go-icon" class="go-icon"><i class="fa fa-arrow-right"></i></div>
+            </div>
+        </div>
+        <div id="selected-zone" class="selected-zone">Selected: ..... </div>
+    </div>
+    <div id="current-weather-container" class="current-weather-container">
+        <div class="loader"></div>
+        <div id="location-error" class="location-error">The location was not found...</div>
+        <div class="current-temperature-container">
+            <div id="current-temperature" class="current-temperature">-5&deg;C</div>
+            <div class="current-night-weather-container">
+                <div id="current-night-weather" class="current-night-weather">Rain</div>
+                <div id="current-night-temperature" class="current-night-temperature">+8&deg;C</div>
+            </div>
+        </div>
+        <div class="current-zone-info-container">
+            <div id="current-zone-weather" class="current-zone-weather">Clouds</div>
+            <div id="current-zone-name" class="current-zone-name">Monza, Italy</div>
+        </div>
+        <img id="current-weather-icon" class="current-weather-icon" src="./images/cloud.png" alt="weather icon">
+    </div>
+    <div id="week-weather-container" class="week-weather-container">
+        <div class="day-weather-container">
+            <div id="day-name1" class="day-name">TUE</div>
+            <img id="day-weather-icon1" class="day-weather-icon" src="./images/rainy.png" alt="weather icon">
+            <div id="day-weather1" class="day-weather">Rain</div>
+            <div class="day-weather-overview-container">
+                <div id="day-title1" class="day-title">Day</div>
+                <div id="day-weather-temperature1" class="day-weather-temperature">+5&deg;C</div>
+                <div id="night-weather-temperature1" class="night-weather-temperature">+1&deg;C</div>
+                <div id="night-title1" class="night-title">Night</div>
+            </div>
+        </div>
+        <div class="day-weather-container">
+            <div id="day-name2" class="day-name">WED</div>
+            <img id="day-weather-icon2" class="day-weather-icon" src="./images/snow.png" alt="weather icon">
+            <div id="day-weather2" class="day-weather">Rain</div>
+            <div class="day-weather-overview-container">
+                <div id="day-title2" class="day-title">Day</div>
+                <div id="day-weather-temperature2" class="day-weather-temperature">+1&deg;C</div>
+                <div id="night-weather-temperature2" class="night-weather-temperature">+4&deg;C</div>
+                <div id="night-title2" class="night-title">Night</div>
+            </div>
+        </div>
+        <div class="day-weather-container">
+            <div id="day-name3" class="day-name">THU</div>
+            <img id="day-weather-icon3" class="day-weather-icon" src="./images/sun.png" alt="weather icon">
+            <div id="day-weather3" class="day-weather">Rain</div>
+            <div class="day-weather-overview-container">
+                <div id="day-title3" class="day-title">Day</div>
+                <div id="day-weather-temperature3" class="day-weather-temperature">+8&deg;C</div>
+                <div id="night-weather-temperature3" class="night-weather-temperature">+12&deg;C</div>
+                <div id="night-title3" class="night-title">Night</div>
+            </div>
+        </div>
+        <div class="day-weather-container">
+            <div id="day-name4" class="day-name">FRI</div>
+            <img id="day-weather-icon4" class="day-weather-icon" src="./images/sunny.png" alt="weather icon">
+            <div id="day-weather4" class="day-weather">Rain</div>
+            <div class="day-weather-overview-container">
+                <div id="day-title4" class="day-title">Day</div>
+                <div id="day-weather-temperature4" class="day-weather-temperature">+18&deg;C</div>
+                <div id="night-weather-temperature4" class="night-weather-temperature">+12&deg;C</div>
+                <div id="night-title4" class="night-title">Night</div>
+            </div>
+        </div>
+        <div class="day-weather-container">
+            <div id="day-name5" class="day-name">SAT</div>
+            <img id="day-weather-icon5" class="day-weather-icon" src="./images/thunderstorm.png" alt="weather icon">
+            <div id="day-weather5" class="day-weather">Rain</div>
+            <div class="day-weather-overview-container">
+                <div id="day-title5" class="day-title">Day</div>
+                <div id="day-weather-temperature5" class="day-weather-temperature">+2&deg;C</div>
+                <div id="night-weather-temperature5" class="night-weather-temperature">+10&deg;C</div>
+                <div id="night-title5" class="night-title">Night</div>
+            </div>
+        </div>
+        <div class="day-weather-container">
+            <div id="day-name6" class="day-name">SUN</div>
+            <img id="day-weather-icon6" class="day-weather-icon" src="./images/windy.png" alt="weather icon">
+            <div id="day-weather6" class="day-weather">Rain</div>
+            <div class="day-weather-overview-container">
+                <div id="day-title6" class="day-title">Day</div>
+                <div id="day-weather-temperature6" class="day-weather-temperature">+5&deg;C</div>
+                <div id="night-weather-temperature6" class="night-weather-temperature">-8&deg;C</div>
+                <div id="night-title6" class="night-title">Night</div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="./js/searchBar.js"></script>
+    <script type="module" src="./js/index.js"></script>
+</body>
+
+</html>

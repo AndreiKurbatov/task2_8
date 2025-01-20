@@ -1,0 +1,57 @@
+.week-weather-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.day-weather-container {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid gray;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.day-weather-overview-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 55px;
+}
+
+.night-title,
+.day-title {
+    font-size: 12px;
+}
+
+.day-name,
+.day-weather-icon,
+.day-weather {
+    align-self: center;
+}
+
+.day-name {
+    font-size: 24px;
+    width: 55px;
+}
+
+.day-weather {
+    font-size: 20px;
+    width: 100px;
+    text-align: center;
+}
+
+.day-weather-icon {
+    height: 80px;
+    width: 80px;
+}
+
+.day-weather-temperature,
+.night-weather-temperature {
+    font-weight: 700;
+}
