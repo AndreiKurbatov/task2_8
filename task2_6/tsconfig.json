@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "outDir": "./js",
+    "rootDir": "./ts",
+    "strict": true,
+    "lib": ["es2017", "dom"]
+  },
+  "include": ["ts/**/*.ts", "vite-env.d.ts"],
+  "exclude": ["dist"]
+}
