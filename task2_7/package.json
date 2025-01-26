@@ -1,0 +1,7 @@
+{
+    "scripts": {
+        "watch": "tsc --watch",
+        "dev": "vite --config vite.config.js",
+        "build": "vite build"
+    }
+}

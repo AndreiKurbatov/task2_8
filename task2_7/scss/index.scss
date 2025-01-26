@@ -1,0 +1,12 @@
+.default-page-style {
+    padding: 0px;
+    margin: 20px 5px 0px 5px;
+}
+
+.countries-list {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, 150px);
+    justify-content: center;
+}
+
