@@ -1,6 +1,6 @@
-import { addAvailableTask, removeAvailableTask, getLastTaskIndex } from "./task-info-manager.js";
+import { addAvailableTask, removeAvailableTask, getNextTaskIndex } from "./task-info-manager.js";
 
-export function addFunctionality(): void {
+export function setupListeners(): void {
 
     document.querySelectorAll<HTMLInputElement>(".cbtest-19").forEach(checkbox => {
         checkbox.addEventListener('change', (event: Event) => {
@@ -30,7 +30,9 @@ export function addFunctionality(): void {
                             task.isDone = true;
                             localStorage.setItem(id, JSON.stringify(task));
                         }
-                    } catch (error) { }
+                    } catch (error) {
+                        console.error("Error handling task during isDone check");
+                    }
                 } else if (!target.checked && availableTools) {
                     (availableTools.children[0] as HTMLElement).style.display = '';
                     (availableTools.children[1] as HTMLElement).style.display = '';
@@ -43,7 +45,9 @@ export function addFunctionality(): void {
                             task.isDone = false;
                             localStorage.setItem(id, JSON.stringify(task));
                         }
-                    } catch (error) { }
+                    } catch (error) {
+                        console.error("Error handling task during isDone check");
+                    }
                 }
             }
         })
@@ -127,10 +131,12 @@ export function addFunctionality(): void {
                     if (checkbox) {
                         const id = checkbox.id.split('-')[1];
                         const task: Task = JSON.parse(localStorage.getItem(id) || '');
-                        task.taskContent = value;
+                        task.content = value;
                         localStorage.setItem(id, JSON.stringify(task));
                     }
-                } catch (error) { }
+                } catch (error) {
+                    console.error("Error handling task getting task content");
+                }
                 taskContentTextarea.replaceWith(div);
                 div.classList.add("task-content");
             }
@@ -145,8 +151,7 @@ if (addButton && toDoPage && creationTextarea) {
     addButton.addEventListener('click', (event: Event) => {
         if (creationTextarea) {
             const value = creationTextarea.value.trim() || '';
-            let taskIndex = Number(getLastTaskIndex());
-            taskIndex++;
+            let taskIndex = getNextTaskIndex();
             const newTask = `
             <div class="task-container">
                 <div class="checkbox-wrapper-19">
@@ -163,9 +168,13 @@ if (addButton && toDoPage && creationTextarea) {
             `;
             toDoPage.insertAdjacentHTML("afterbegin", newTask);
             creationTextarea.value = '';
-            localStorage.setItem(String(taskIndex), JSON.stringify({ id: taskIndex, taskContent: value, isDone: false }));
+            try {
+                localStorage.setItem(String(taskIndex), JSON.stringify({ id: taskIndex, content: value, isDone: false }));
+            } catch (Error) {
+                console.error("Error saving a new task");
+            }
             addAvailableTask(String(taskIndex));
-            addFunctionality();
+            setupListeners();
         }
     });
 }
