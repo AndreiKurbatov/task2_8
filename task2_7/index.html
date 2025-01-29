@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./scss/index.css">
     <link rel="stylesheet" href="./scss/theme-switcher.css">
+    <link rel="stylesheet" href="./scss/search-bar.css">
     <title>Weather widget</title>
 </head>
 
@@ -35,10 +36,32 @@
         </svg>
         <span class="switch__sr">Dark Mode</span>
     </label>
-    <div class="main-header"></div>
-    <div class="search-bar"></div>
-    <div class="region-selector"></div>
-    <div class="countries-list"> <!--
+    <div class="main-header">Where in the world?</div>
+    <div class="search-bar-wrapper">
+        <form class="search-form" onsubmit="event.preventDefault();" role="search">
+            <label class="search-label" for="search">Search for stuff</label>
+            <input class="search-input" id="search" type="search" placeholder="Search..." autofocus required />
+            <button class="search-button" type="submit">Go</button>
+        </form>
+    </div>
+    <div class="region-selector">
+        <select>
+            <option value="0">Select car:</option>
+            <option value="1">Audi</option>
+            <option value="2">BMW</option>
+            <option value="3">Citroen</option>
+            <option value="4">Ford</option>
+            <option value="5">Honda</option>
+            <option value="6">Jaguar</option>
+            <option value="7">Land Rover</option>
+            <option value="8">Mercedes</option>
+            <option value="9">Mini</option>
+            <option value="10">Nissan</option>
+            <option value="11">Toyota</option>
+            <option value="12">Volvo</option>
+          </select>
+    </div>
+    <div class="countries-list">
         <div class="country-container">
             <img class="flag" src="./images/italy.png" alt="country flag">
             <div class="country-name">Portugal</div>
@@ -188,7 +211,7 @@
                     <span class="population-header">Capital: </span><span class="population-content">Lisboa</span>
                 </div>
             </div>
-        </div>-->
+        </div>
     </div>
     <script type="module" src="./js/task.js"></script>
     <script type="module" src="./js/task-generator.js"></script>

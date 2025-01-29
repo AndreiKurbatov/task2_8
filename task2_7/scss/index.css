@@ -1,11 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 .default-page-style {
   padding: 0px;
-  margin: 20px 5px 0px 5px;
+  margin: 20px 15px 0px 15px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto", serif;
 }
 
 .countries-list {
   display: grid;
   gap: 10px;
-  grid-template-columns: repeat(auto-fit, 150px);
+  grid-template-columns: repeat(auto-fit, 215px);
   justify-content: center;
+}
+
+.country-container {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 50px 40px rgba(194, 194, 194, 0.2);
+  background-color: white;
+  border-radius: 15px;
+  height: 300px;
+}
+
+.main-header {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.country-name {
+  font-size: 20px;
+  font-weight: 700;
+  margin-left: 15px;
+}
+
+.country-info-container {
+  font-size: 13px;
+  margin: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.population-header {
+  font-weight: 700;
+}
+
+.population-content {
+  font-weight: 100;
+}
+
+.flag {
+  height: 50%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }/*# sourceMappingURL=index.css.map */

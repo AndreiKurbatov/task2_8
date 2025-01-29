@@ -1,10 +1,3 @@
-* {
-  border: 0;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 :root {
   --hue: 223;
   --bg: hsl(var(--hue),10%,90%);
@@ -17,28 +10,28 @@
   font-size: 64.6428571429px;
 }
 
-body,
-input {
+.default-page-style,
+.switch__input {
   color: var(--fg);
   font: 1em/1.5 sans-serif;
 }
 
-body {
+.default-page-style {
   background-color: var(--bg);
   display: flex;
   height: 100vh;
   transition: background-color var(--trans-dur), color var(--trans-dur);
 }
 
-body:has(.switch__input:checked) {
+.default-page-style:has(.switch__input:checked) {
   background-color: var(--fg);
   color: var(--bg);
 }
 
 .switch {
-  margin: auto;
   position: relative;
   height: 35px;
+  margin-bottom: 30px;
 }
 
 .switch__icon,
@@ -48,8 +41,8 @@ body:has(.switch__input:checked) {
 
 .switch__icon {
   position: absolute;
-  top: 7%;
-  right: 2%;
+  top: 15%;
+  right: 3%;
   width: 25px;
   height: 25px;
   transition: opacity calc(var(--trans-dur) / 2), transform calc(var(--trans-dur) / 2);
@@ -110,10 +103,10 @@ body:has(.switch__input:checked) {
   background-color: hsl(0, 0%, 100%);
   border-radius: 50%;
   box-shadow: 0.05em 0.05em 0.05em hsla(var(--hue), 90%, 10%, 0.1);
-  left: 2%;
-  top: 5%;
-  width: 27px;
-  height: 27px;
+  left: 3.2%;
+  top: 8.33%;
+  width: 25px;
+  height: 25px;
   transition: background-color var(--trans-dur) var(--trans-timing), transform var(--trans-dur) var(--trans-timing);
   z-index: 1;
 }
