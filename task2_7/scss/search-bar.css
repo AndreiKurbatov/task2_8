@@ -53,6 +53,12 @@
   z-index: 1;
   position: relative;
 }
+.search-input::-moz-placeholder {
+  color: gray;
+}
+.search-input::placeholder {
+  color: gray;
+}
 
 .search-button {
   display: none;

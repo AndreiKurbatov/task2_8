@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./scss/index.css">
     <link rel="stylesheet" href="./scss/theme-switcher.css">
     <link rel="stylesheet" href="./scss/search-bar.css">
+    <link rel="stylesheet" href="./scss/select-bar.css">
     <title>Weather widget</title>
 </head>
 
@@ -44,22 +45,50 @@
             <button class="search-button" type="submit">Go</button>
         </form>
     </div>
-    <div class="region-selector">
-        <select>
-            <option value="0">Select car:</option>
-            <option value="1">Audi</option>
-            <option value="2">BMW</option>
-            <option value="3">Citroen</option>
-            <option value="4">Ford</option>
-            <option value="5">Honda</option>
-            <option value="6">Jaguar</option>
-            <option value="7">Land Rover</option>
-            <option value="8">Mercedes</option>
-            <option value="9">Mini</option>
-            <option value="10">Nissan</option>
-            <option value="11">Toyota</option>
-            <option value="12">Volvo</option>
-          </select>
+    <div class="select-box-wrapper">
+        <div class="select-box">
+            <div class="select-box__current" tabindex="1">
+                <div class="select-box__value">
+                    <input class="select-box__input" type="radio" id="0" value="1" name="Ben" checked>
+                    <p class="select-box__input-text">Cream</p>
+                </div>
+                <div class="select-box__value">
+                    <input class="select-box__input" type="radio" id="1" value="2" name="Ben">
+                    <p class="select-box__input-text">Cheese</p>
+                </div>
+                <div class="select-box__value">
+                    <input class="select-box__input" type="radio" id="2" value="3" name="Ben">
+                    <p class="select-box__input-text">Milk</p>
+                </div>
+                <div class="select-box__value">
+                    <input class="select-box__input" type="radio" id="3" value="4" name="Ben">
+                    <p class="select-box__input-text">Honey</p>
+                </div>
+                <div class="select-box__value">
+                    <input class="select-box__input" type="radio" id="4" value="5" name="Ben">
+                    <p class="select-box__input-text">Toast</p>
+                </div>
+                <img class="select-box__icon" src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon"
+                    aria-hidden="true">
+            </div>
+            <ul class="select-box__list">
+                <li>
+                    <label class="select-box__option" for="0" aria-hidden="true">Cream</label>
+                </li>
+                <li>
+                    <label class="select-box__option" for="1" aria-hidden="true">Cheese</label>
+                </li>
+                <li>
+                    <label class="select-box__option" for="2" aria-hidden="true">Milk</label>
+                </li>
+                <li>
+                    <label class="select-box__option" for="3" aria-hidden="true">Honey</label>
+                </li>
+                <li>
+                    <label class="select-box__option" for="4" aria-hidden="true">Toast</label>
+                </li>
+            </ul>
+        </div>
     </div>
     <div class="countries-list">
         <div class="country-container">
