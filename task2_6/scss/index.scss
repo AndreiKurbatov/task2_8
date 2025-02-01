@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.default-page-style {
+    margin: 0px;
+    padding: 0px;
+    background-color: rgb(225, 225, 225);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.to-do-page {
+    background-color: white;
+    height: 800px;
+    width: 800px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    font-family: "Roboto", serif;
+    gap: 15px;
+    padding-top: 15px;
+    overflow-y: auto;
+}
+
+.creation-textarea {
+    all: unset;
+    font-size: 30px;
+    font-family: "Roboto", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    color: rgb(76, 76, 76);
+    font-style: normal;
+    background-color: white;
+    height: 100px;
+    width: 800px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    text-align: start;
+    padding: 30px 130px 30px 30px;
+    box-sizing: border-box;
+    box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.2);
+
+    &::placeholder {
+        color: gray;
+    }
+}
+
+.add-button {
+    all: unset;
+    position: absolute;
+    background-color: rgb(17, 188, 17);
+    color: white;
+    font-size: 30px;
+    font-family: "Roboto", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    text-align: center;
+    border-radius: 10px;
+    width: 110px;
+    height: 50px;
+    transition: transform 0.1s ease, background-color 0.3s ease-in-out;
+    top: 3%;
+    left: 83%;
+
+    &:hover {
+        background-color: green;
+    }
+
+    &:active {
+        transform: translateY(4px);
+        box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.to-do-list-container {
+    position: relative;
+}
+
+.task-container {
+    display: flex;
+    width: 95%;
+    border: 1px solid rgb(179, 179, 179);
+    border-radius: 10px;
+    box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+        background-color: rgb(241, 241, 241);
+        cursor: pointer;
+    }
+
+    &:hover .available-tool-icon:nth-child(2) {
+        display: block;
+    }
+
+    &:hover .available-tool-icon:nth-child(3) {
+        display: block;
+    }
+}
+
+.task-content {
+    padding-left: 12px;
+    margin: 12px 12px 12px 0px;
+    text-align: center;
+    border-left: 1px solid rgb(179, 179, 179);
+    text-align: left;
+    min-width: 600px;
+}
+
+.available-tools {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 15px;
+}
+
+.available-tool-icon {
+    display: none;
+    height: 15px;
+    width: 15px;
+    padding-right: 12px;
+    padding-top: 15px;
+}
+
+.checkbox-wrapper-19:has(.cbtest-19:checked) + .task-content {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.task-content-textarea {
+    all:unset;
+    padding-left: 12px;
+    margin: 12px 12px 12px 0px;
+    text-align: center;
+    border-left: 1px solid rgb(179, 179, 179);
+    text-align: left;
+    min-width: 620px;
+    overflow: hidden;
+
+    &:hover {
+        cursor: text;
+    }
+}
+
+.task-content-textarea + .available-tools > .available-tool-icon:nth-child(1) {
+    display: block;
+}
+.task-content-textarea + .available-tools > .available-tool-icon:nth-child(2),
+.task-content-textarea + .available-tools > .available-tool-icon:nth-child(3) {
+    display: none;
+}
