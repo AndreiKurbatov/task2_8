@@ -1,6 +1,6 @@
 :root {
-    --rad: .7rem;
-    --dur: .3s;
+    --rad: 0.7rem;
+    --dur: 0.3s;
     --color-dark: #2f2f2f;
     --color-light: #fff;
     --color-brand: #57bd84;
@@ -48,8 +48,7 @@
     padding: 0px 30px 0px 20px;
     border-radius: var(--rad);
     appearance: none;
-    transition: all var(--dur) var(--bez);
-    transition-property: width, border-radius;
+    transition: all var(--dur);
     z-index: 1;
     position: relative;
 

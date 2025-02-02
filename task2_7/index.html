@@ -12,239 +12,92 @@
 </head>
 
 <body id="body-id" class="default-page-style">
-    <label class="switch">
-        <input class="switch__input" type="checkbox" role="switch">
-        <svg class="switch__icon switch__icon--light" viewBox="0 0 12 12" width="12px" height="12px" aria-hidden="true">
-            <g fill="none" stroke="#fff" stroke-width="1" stroke-linecap="round">
-                <circle cx="6" cy="6" r="2" />
-                <g stroke-dasharray="1.5 1.5">
-                    <polyline points="6 10,6 11.5" transform="rotate(0,6,6)" />
-                    <polyline points="6 10,6 11.5" transform="rotate(45,6,6)" />
-                    <polyline points="6 10,6 11.5" transform="rotate(90,6,6)" />
-                    <polyline points="6 10,6 11.5" transform="rotate(135,6,6)" />
-                    <polyline points="6 10,6 11.5" transform="rotate(180,6,6)" />
-                    <polyline points="6 10,6 11.5" transform="rotate(225,6,6)" />
-                    <polyline points="6 10,6 11.5" transform="rotate(270,6,6)" />
-                    <polyline points="6 10,6 11.5" transform="rotate(315,6,6)" />
+    <div class="menu-container">
+        <label class="switch">
+            <input class="switch__input" type="checkbox" role="switch">
+            <svg class="switch__icon switch__icon--light" viewBox="0 0 12 12" width="12px" height="12px"
+                aria-hidden="true">
+                <g fill="none" stroke="#fff" stroke-width="1" stroke-linecap="round">
+                    <circle cx="6" cy="6" r="2" />
+                    <g stroke-dasharray="1.5 1.5">
+                        <polyline points="6 10,6 11.5" transform="rotate(0,6,6)" />
+                        <polyline points="6 10,6 11.5" transform="rotate(45,6,6)" />
+                        <polyline points="6 10,6 11.5" transform="rotate(90,6,6)" />
+                        <polyline points="6 10,6 11.5" transform="rotate(135,6,6)" />
+                        <polyline points="6 10,6 11.5" transform="rotate(180,6,6)" />
+                        <polyline points="6 10,6 11.5" transform="rotate(225,6,6)" />
+                        <polyline points="6 10,6 11.5" transform="rotate(270,6,6)" />
+                        <polyline points="6 10,6 11.5" transform="rotate(315,6,6)" />
+                    </g>
                 </g>
-            </g>
-        </svg>
-        <svg class="switch__icon switch__icon--dark" viewBox="0 0 12 12" width="12px" height="12px" aria-hidden="true">
-            <g fill="none" stroke="#fff" stroke-width="1" stroke-linejoin="round" transform="rotate(-45,6,6)">
-                <path
-                    d="m9,10c-2.209,0-4-1.791-4-4s1.791-4,4-4c.304,0,.598.041.883.105-.995-.992-2.367-1.605-3.883-1.605C2.962.5.5,2.962.5,6s2.462,5.5,5.5,5.5c1.516,0,2.888-.613,3.883-1.605-.285.064-.578.105-.883.105Z" />
-            </g>
-        </svg>
-        <span class="switch__sr">Dark Mode</span>
-    </label>
-    <div class="main-header">Where in the world?</div>
-    <div class="search-bar-wrapper">
-        <form class="search-form" onsubmit="event.preventDefault();" role="search">
-            <label class="search-label" for="search">Search for stuff</label>
-            <input class="search-input" id="search" type="search" placeholder="Search..." autofocus required />
-            <button class="search-button" type="submit">Go</button>
-        </form>
-    </div>
-    <div class="select-box-wrapper">
-        <div class="select-box">
-            <div class="select-box__current" tabindex="1">
-                <div class="select-box__value">
-                    <input class="select-box__input" type="radio" id="0" value="1" name="Ben" checked>
-                    <p class="select-box__input-text">Cream</p>
-                </div>
-                <div class="select-box__value">
-                    <input class="select-box__input" type="radio" id="1" value="2" name="Ben">
-                    <p class="select-box__input-text">Cheese</p>
-                </div>
-                <div class="select-box__value">
-                    <input class="select-box__input" type="radio" id="2" value="3" name="Ben">
-                    <p class="select-box__input-text">Milk</p>
-                </div>
-                <div class="select-box__value">
-                    <input class="select-box__input" type="radio" id="3" value="4" name="Ben">
-                    <p class="select-box__input-text">Honey</p>
-                </div>
-                <div class="select-box__value">
-                    <input class="select-box__input" type="radio" id="4" value="5" name="Ben">
-                    <p class="select-box__input-text">Toast</p>
-                </div>
-                <img class="select-box__icon" src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon"
-                    aria-hidden="true">
-            </div>
-            <ul class="select-box__list">
-                <li>
-                    <label class="select-box__option" for="0" aria-hidden="true">Cream</label>
-                </li>
-                <li>
-                    <label class="select-box__option" for="1" aria-hidden="true">Cheese</label>
-                </li>
-                <li>
-                    <label class="select-box__option" for="2" aria-hidden="true">Milk</label>
-                </li>
-                <li>
-                    <label class="select-box__option" for="3" aria-hidden="true">Honey</label>
-                </li>
-                <li>
-                    <label class="select-box__option" for="4" aria-hidden="true">Toast</label>
-                </li>
-            </ul>
+            </svg>
+            <svg class="switch__icon switch__icon--dark" viewBox="0 0 12 12" width="12px" height="12px"
+                aria-hidden="true">
+                <g fill="none" stroke="#fff" stroke-width="1" stroke-linejoin="round" transform="rotate(-45,6,6)">
+                    <path
+                        d="m9,10c-2.209,0-4-1.791-4-4s1.791-4,4-4c.304,0,.598.041.883.105-.995-.992-2.367-1.605-3.883-1.605C2.962.5.5,2.962.5,6s2.462,5.5,5.5,5.5c1.516,0,2.888-.613,3.883-1.605-.285.064-.578.105-.883.105Z" />
+                </g>
+            </svg>
+            <span class="switch__sr">Dark Mode</span>
+        </label>
+        <div class="main-header">Where in the world?</div>
+        <div class="search-bar-wrapper">
+            <form id="search-form" class="search-form" onsubmit="event.preventDefault();" role="search">
+                <label class="search-label" for="search">Search for stuff</label>
+                <input class="search-input" id="search" type="search" placeholder="Search..." autofocus required />
+                <button class="search-button" type="submit">Go</button>
+            </form>
         </div>
-    </div>
-    <div class="countries-list">
-        <div class="country-container">
-            <img class="flag" src="./images/italy.png" alt="country flag">
-            <div class="country-name">Portugal</div>
-            <div class="country-info-container">
-                <div class="country-info">
-                    <span class="population-header">Population: </span><span class="population-content">11 000 000</span>
+        <div class="select-box-wrapper">
+            <div class="select-box">
+                <div class="select-box__current" tabindex="1">
+                    <div class="select-box__value">
+                        <input class="select-box__input" type="radio" id="0" value="1" name="Ben" checked>
+                        <p class="select-box__input-text">Cream</p>
+                    </div>
+                    <div class="select-box__value">
+                        <input class="select-box__input" type="radio" id="1" value="2" name="Ben">
+                        <p class="select-box__input-text">Cheese</p>
+                    </div>
+                    <div class="select-box__value">
+                        <input class="select-box__input" type="radio" id="2" value="3" name="Ben">
+                        <p class="select-box__input-text">Milk</p>
+                    </div>
+                    <div class="select-box__value">
+                        <input class="select-box__input" type="radio" id="3" value="4" name="Ben">
+                        <p class="select-box__input-text">Honey</p>
+                    </div>
+                    <div class="select-box__value">
+                        <input class="select-box__input" type="radio" id="4" value="5" name="Ben">
+                        <p class="select-box__input-text">Toast</p>
+                    </div>
+                    <img class="select-box__icon" src="http://cdn.onlinewebfonts.com/svg/img_295694.svg"
+                        alt="Arrow Icon" aria-hidden="true">
                 </div>
-                <div class="country-info">
-                    <span class="population-header">Region: </span><span class="population-content">Europe</span>
-                </div>
-                <div class="country-info">
-                    <span class="population-header">Capital: </span><span class="population-content">Lisboa</span>
-                </div>
-            </div>
-        </div>
-        <div class="country-container">
-            <img class="flag" src="./images/italy.png" alt="country flag">
-            <div class="country-name">Portugal</div>
-            <div class="country-info-container">
-                <div class="country-info">
-                    <span class="population-header">Population: </span><span class="population-content">11 000 000</span>
-                </div>
-                <div class="country-info">
-                    <span class="population-header">Region: </span><span class="population-content">Europe</span>
-                </div>
-                <div class="country-info">
-                    <span class="population-header">Capital: </span><span class="population-content">Lisboa</span>
-                </div>
-            </div>
-        </div>
-        <div class="country-container">
-            <img class="flag" src="./images/italy.png" alt="country flag">
-            <div class="country-name">Portugal</div>
-            <div class="country-info-container">
-                <div class="country-info">
-                    <span class="population-header">Population: </span><span class="population-content">11 000 000</span>
-                </div>
-                <div class="country-info">
-                    <span class="population-header">Region: </span><span class="population-content">Europe</span>
-                </div>
-                <div class="country-info">
-                    <span class="population-header">Capital: </span><span class="population-content">Lisboa</span>
-                </div>
-            </div>
-        </div>
-        <div class="country-container">
-            <img class="flag" src="./images/italy.png" alt="country flag">
-            <div class="country-name">Portugal</div>
-            <div class="country-info-container">
-                <div class="country-info">
-                    <span class="population-header">Population: </span><span class="population-content">11 000 000</span>
-                </div>
-                <div class="country-info">
-                    <span class="population-header">Region: </span><span class="population-content">Europe</span>
-                </div>
-                <div class="country-info">
-                    <span class="population-header">Capital: </span><span class="population-content">Lisboa</span>
-                </div>
-            </div>
-        </div>
-        <div class="country-container">
-            <img class="flag" src="./images/italy.png" alt="country flag">
-            <div class="country-name">Portugal</div>
-            <div class="country-info-container">
-                <div class="country-info">
-                    <span class="population-header">Population: </span><span class="population-content">11 000 000</span>
-                </div>
-                <div class="country-info">
-                    <span class="population-header">Region: </span><span class="population-content">Europe</span>
-                </div>
-                <div class="country-info">
-                    <span class="population-header">Capital: </span><span class="population-content">Lisboa</span>
-                </div>
-            </div>
-        </div>
-        <div class="country-container">
-            <img class="flag" src="./images/italy.png" alt="country flag">
-            <div class="country-name">Portugal</div>
-            <div class="country-info-container">
-                <div class="country-info">
-                    <span class="population-header">Population: </span><span class="population-content">11 000 000</span>
-                </div>
-                <div class="country-info">
-                    <span class="population-header">Region: </span><span class="population-content">Europe</span>
-                </div>
-                <div class="country-info">
-                    <span class="population-header">Capital: </span><span class="population-content">Lisboa</span>
-                </div>
-            </div>
-        </div>
-        <div class="country-container">
-            <img class="flag" src="./images/italy.png" alt="country flag">
-            <div class="country-name">Portugal</div>
-            <div class="country-info-container">
-                <div class="country-info">
-                    <span class="population-header">Population: </span><span class="population-content">11 000 000</span>
-                </div>
-                <div class="country-info">
-                    <span class="population-header">Region: </span><span class="population-content">Europe</span>
-                </div>
-                <div class="country-info">
-                    <span class="population-header">Capital: </span><span class="population-content">Lisboa</span>
-                </div>
-            </div>
-        </div>
-        <div class="country-container">
-            <img class="flag" src="./images/italy.png" alt="country flag">
-            <div class="country-name">Portugal</div>
-            <div class="country-info-container">
-                <div class="country-info">
-                    <span class="population-header">Population: </span><span class="population-content">11 000 000</span>
-                </div>
-                <div class="country-info">
-                    <span class="population-header">Region: </span><span class="population-content">Europe</span>
-                </div>
-                <div class="country-info">
-                    <span class="population-header">Capital: </span><span class="population-content">Lisboa</span>
-                </div>
-            </div>
-        </div>
-        <div class="country-container">
-            <img class="flag" src="./images/italy.png" alt="country flag">
-            <div class="country-name">Portugal</div>
-            <div class="country-info-container">
-                <div class="country-info">
-                    <span class="population-header">Population: </span><span class="population-content">11 000 000</span>
-                </div>
-                <div class="country-info">
-                    <span class="population-header">Region: </span><span class="population-content">Europe</span>
-                </div>
-                <div class="country-info">
-                    <span class="population-header">Capital: </span><span class="population-content">Lisboa</span>
-                </div>
-            </div>
-        </div>
-        <div class="country-container">
-            <img class="flag" src="./images/italy.png" alt="country flag">
-            <div class="country-name">Portugal</div>
-            <div class="country-info-container">
-                <div class="country-info">
-                    <span class="population-header">Population: </span><span class="population-content">11 000 000</span>
-                </div>
-                <div class="country-info">
-                    <span class="population-header">Region: </span><span class="population-content">Europe</span>
-                </div>
-                <div class="country-info">
-                    <span class="population-header">Capital: </span><span class="population-content">Lisboa</span>
-                </div>
+                <ul class="select-box__list">
+                    <li>
+                        <label class="select-box__option" for="0" aria-hidden="true">Cream</label>
+                    </li>
+                    <li>
+                        <label class="select-box__option" for="1" aria-hidden="true">Cheese</label>
+                    </li>
+                    <li>
+                        <label class="select-box__option" for="2" aria-hidden="true">Milk</label>
+                    </li>
+                    <li>
+                        <label class="select-box__option" for="3" aria-hidden="true">Honey</label>
+                    </li>
+                    <li>
+                        <label class="select-box__option" for="4" aria-hidden="true">Toast</label>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-    <script type="module" src="./js/task.js"></script>
-    <script type="module" src="./js/task-generator.js"></script>
-    <script type="module" src="./js/task-options.js"></script>
+    <div id="countries-list" class="countries-list">
+        <div id="sentinel"></div>
+    </div>
+    <script type="module" src="./js/index.js"></script>
 </body>
 
 </html>

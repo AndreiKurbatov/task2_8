@@ -57,4 +57,40 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+@media (min-width: 768px) {
+  .menu-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .main-header {
+    order: 1;
+    margin-right: auto;
+  }
+  .switch {
+    order: 2;
+    margin-left: auto;
+    transform: translate(-4px, 30px);
+  }
+  .search-bar-wrapper {
+    order: 3;
+    width: 400px !important;
+    margin-right: auto;
+  }
+  .select-box-wrapper {
+    order: 4;
+    padding: 20px 0px 10px 0px !important;
+    margin-left: auto !important;
+    width: 200px;
+  }
+  .select-box-wrapper,
+  .search-bar-wrapper,
+  .main-header,
+  .switch {
+    flex: 0 0 50%;
+  }
+  .countries-list {
+    margin-top: 20px;
+  }
 }/*# sourceMappingURL=index.css.map */

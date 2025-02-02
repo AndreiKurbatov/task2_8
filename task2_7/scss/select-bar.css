@@ -1,5 +1,9 @@
+:root {
+  --dur: 0.3s;
+}
+
 .select-box-wrapper {
-  padding: 40px 0px 10px 0px;
+  padding: 30px 0px 10px 0px;
   box-sizing: border-box;
   margin: 0;
 }
@@ -55,6 +59,7 @@
   border-radius: 50px;
   font-size: 20px;
   color: gray;
+  transition: all var(--dur);
 }
 .select-box__list {
   position: absolute;
