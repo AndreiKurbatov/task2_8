@@ -58,6 +58,8 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    object-fit: cover;
+    border-radius: 15px;
 }
 
 @media (min-width: 768px) {
@@ -100,6 +102,10 @@
 
     .countries-list {
         margin-top: 20px;
+    }
+
+    .switch__icon {
+        top: 13% !important;
     }
 
 }

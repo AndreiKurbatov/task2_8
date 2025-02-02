@@ -42,7 +42,7 @@
         </label>
         <div class="main-header">Where in the world?</div>
         <div class="search-bar-wrapper">
-            <form id="search-form" class="search-form" onsubmit="event.preventDefault();" role="search">
+            <form id="search-form" class="search-form" role="search">
                 <label class="search-label" for="search">Search for stuff</label>
                 <input class="search-input" id="search" type="search" placeholder="Search..." autofocus required />
                 <button class="search-button" type="submit">Go</button>
@@ -52,43 +52,50 @@
             <div class="select-box">
                 <div class="select-box__current" tabindex="1">
                     <div class="select-box__value">
-                        <input class="select-box__input" type="radio" id="0" value="1" name="Ben" checked>
-                        <p class="select-box__input-text">Cream</p>
+                        <input class="select-box__input" type="radio" id="0" value="1" checked name="region">
+                        <p class="select-box__input-text">All</p>
                     </div>
                     <div class="select-box__value">
-                        <input class="select-box__input" type="radio" id="1" value="2" name="Ben">
-                        <p class="select-box__input-text">Cheese</p>
+                        <input class="select-box__input" type="radio" id="1" value="2" name="region">
+                        <p class="select-box__input-text">Africa</p>
                     </div>
                     <div class="select-box__value">
-                        <input class="select-box__input" type="radio" id="2" value="3" name="Ben">
-                        <p class="select-box__input-text">Milk</p>
+                        <input class="select-box__input" type="radio" id="2" value="3" name="region">
+                        <p class="select-box__input-text">Americas</p>
                     </div>
                     <div class="select-box__value">
-                        <input class="select-box__input" type="radio" id="3" value="4" name="Ben">
-                        <p class="select-box__input-text">Honey</p>
+                        <input class="select-box__input" type="radio" id="3" value="4" name="region">
+                        <p class="select-box__input-text">Asia</p>
                     </div>
                     <div class="select-box__value">
-                        <input class="select-box__input" type="radio" id="4" value="5" name="Ben">
-                        <p class="select-box__input-text">Toast</p>
+                        <input class="select-box__input" type="radio" id="4" value="5" name="region">
+                        <p class="select-box__input-text">Europe</p>
+                    </div>
+                    <div class="select-box__value">
+                        <input class="select-box__input" type="radio" id="5" value="6" name="region">
+                        <p class="select-box__input-text">Oceania</p>
                     </div>
                     <img class="select-box__icon" src="http://cdn.onlinewebfonts.com/svg/img_295694.svg"
                         alt="Arrow Icon" aria-hidden="true">
                 </div>
                 <ul class="select-box__list">
                     <li>
-                        <label class="select-box__option" for="0" aria-hidden="true">Cream</label>
+                        <label class="select-box__option" for="0" aria-hidden="true">All</label>
                     </li>
                     <li>
-                        <label class="select-box__option" for="1" aria-hidden="true">Cheese</label>
+                        <label class="select-box__option" for="1" aria-hidden="true">Africa</label>
                     </li>
                     <li>
-                        <label class="select-box__option" for="2" aria-hidden="true">Milk</label>
+                        <label class="select-box__option" for="2" aria-hidden="true">Americas</label>
                     </li>
                     <li>
-                        <label class="select-box__option" for="3" aria-hidden="true">Honey</label>
+                        <label class="select-box__option" for="3" aria-hidden="true">Asia</label>
                     </li>
                     <li>
-                        <label class="select-box__option" for="4" aria-hidden="true">Toast</label>
+                        <label class="select-box__option" for="4" aria-hidden="true">Europe</label>
+                    </li>
+                    <li>
+                        <label class="select-box__option" for="5" aria-hidden="true">Oceania</label>
                     </li>
                 </ul>
             </div>
