@@ -2,14 +2,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 .parallax-photo-container .photo {
+    margin-bottom: 20px;
     z-index: 0;
-    position: absolute;
+    /*position: absolute;*/
+    position: relative;
     background-size: cover;
     background-repeat: no-repeat;
-    transform: translateZ(-1px);
+    /*transform: translateZ(-1px);
     top: -50%;
     left: -51%;
     width: 201%; /*dispable this to make parallax work on mobile*/
+    top: 0%;
+    left: 0%;
+    width: 100%;
 }
 
 .parallax-photo-container .header {
@@ -37,7 +42,7 @@
 
 .parallax-photo-container {
     position: relative;
-    height: 40vh; /*it was 100vh*/
+    /*height: 40vh; /*it was 100vh*/
     overflow-x: hidden;
-    perspective: 1px;
+    /*perspective: 1px;*/
 }

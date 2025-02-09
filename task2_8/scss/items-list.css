@@ -23,7 +23,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: start;
-            padding: 25px;
+            padding: 25px 180px 25px 25px;
             gap: 15px;
             box-sizing: border-box;
             width: 96%;
@@ -52,7 +52,8 @@
                 font-family: "Poppins", serif;
                 font-weight: 400;
                 color: rgb(46, 46, 46);
-                width: 30ch;
+                min-width: 23ch;
+                max-width: 40ch;
                 word-wrap: break-word;
             }
 
@@ -70,12 +71,12 @@
 
             &:nth-child(1) .wine-container {
                 top: 14%;
-                left: 65%;
+                left: 66%;
             }
 
             &:nth-child(2) .wine-container {
                 top: 15%;
-                left: 65%;
+                left: 61%;
             }
 
             &:nth-child(3) .wine-container {
