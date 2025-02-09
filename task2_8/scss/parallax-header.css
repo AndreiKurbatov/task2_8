@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.parallax-photo-container .photo {
+    z-index: 0;
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transform: translateZ(-1px);
+    top: -50%;
+    left: -51%;
+    width: 201%; /*dispable this to make parallax work on mobile*/
+}
+
+.parallax-photo-container .header {
+    position: absolute;
+    font-family: "EB Garamond", serif;
+    color: rgb(255, 255, 255);
+    top: 22vw;
+    left: 2%;
+    font-size: 11vw;
+    line-height: 0.9;
+    font-weight: 600;
+    transform: translateZ(0px);
+}
+
+.parallax-photo-container .paragraph {
+    position: absolute;
+    font-family: "Poppins", serif;
+    font-size: 3vw;
+    font-weight: 300;
+    color: white;
+    top: 45vw;
+    left: 2%;
+    transform: translateZ(0px);
+}
+
+.parallax-photo-container {
+    position: relative;
+    height: 40vh; /*it was 100vh*/
+    overflow-x: hidden;
+    perspective: 1px;
+}

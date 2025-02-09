@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Custom Email Form</title>
+  <style>
+    /* Stile base per il body */
+    body {
+      background: #f0f0f0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    /* Container del form */
+    .form-container {
+      width: 300px;
+    }
+
+    /* Stile per l'input email */
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid black;        /* Bordo nero di default */
+      background: transparent;         /* Sfondo trasparente */
+      outline: none;                   /* Rimuove il bordo di default del browser */
+      transition: border-color 0.5s ease; /* Transizione graduale per il cambio colore del bordo */
+    }
+
+    /* Stile per il placeholder */
+    input[type="email"]::placeholder {
+      color: #777;
+    }
+
+    /* Cambio colore del bordo quando l'input è in focus */
+    input[type="email"]:focus {
+      border-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <form action="#">
+      <input type="email" placeholder="Enter email" required>
+    </form>
+  </div>
+</body>
+</html>
