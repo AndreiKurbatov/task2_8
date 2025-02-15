@@ -1,0 +1,102 @@
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(32, 7, 7);
+    margin-top: 25px;
+    color: rgb(189, 189, 189);
+    font-family: "Poppins", serif;
+    font-weight: 300;
+
+    .footer-header-container {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .header-wrapper {
+            font-weight: 900;
+            font-size: 30px;
+
+            .header-prefix {
+                color: brown;
+            }
+
+            .header-postfix {
+                color: wheat;
+                background-color: transparent;
+            }
+        }
+
+        .paragraph {
+            text-align: center;
+            margin: 10px 0px 10px 0px;
+        }
+
+        .social-media-container {
+            margin: 25px 0px 15px 0px;
+        }
+
+        .social-media-container {
+            display: flex;
+            column-gap: 20px;
+
+            .fa {
+                font-size: 30px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .shop-info-container {
+        display: grid;
+        margin-top: 30px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 30px;
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: start;
+            row-gap: 8px;
+
+            .header {
+                height: auto !important;
+                width: auto !important;
+                font-weight: 500;
+                color:white;
+            }
+        }
+
+        .item:nth-child(1) {
+            grid-area: 1 / 1 / 2 / 2;
+        }
+
+        .item:nth-child(2) {
+            grid-area: 1 / 2 / 2 / 3;
+        }
+
+        .item:nth-child(3) {
+            grid-area: 2 / 1 / 4 / 2;
+        }
+
+        .item:nth-child(4) {
+            grid-area: 2 / 2 / 3 / 3;
+        }
+
+        .item:nth-child(5) {
+            grid-area: 3 / 2 / 4 / 3;
+        }
+    }
+
+    .rights-note {
+        padding: 40px 0px 30px 0px;
+        font-weight: 500;
+        color:white;
+    }
+
+}
