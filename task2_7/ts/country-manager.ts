@@ -1,3 +1,12 @@
+/*
+* I’ll say right away that this is not a mandatory feature.
+I imported only the ccn3 field for each country just to later,
+as the user scrolls the page, import the full country object,
+which is heavier as it contains many fields,
+including particularly heavy ones like the flag image.
+In this way, I tested a method to optimize data loading on the page
+*/
+
 export async function getAllCountriesCcn3() : Promise<string[]> {
     const url : string = "https://restcountries.com/v3.1/all?fields=ccn3";
     try {

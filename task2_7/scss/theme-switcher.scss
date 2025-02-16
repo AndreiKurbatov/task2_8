@@ -1,58 +1,53 @@
 :root {
 	--hue: 223;
-	--bg: hsl(var(--hue),10%,90%);
-	--fg: hsl(var(--hue),10%,10%);
-	--bd: rgba(255, 255, 255, 0.301);
-	--primary: hsl(var(--hue),90%,50%);
-	--trans-dur: 0.3s;
-	--trans-timing: cubic-bezier(0.76,0.05,0.24,0.95);
-	--trans-timing-in: cubic-bezier(0.76,0.05,0.86,0.06);
-	--trans-timing-out: cubic-bezier(0.05,0.76,0.06,0.86);
+	--background: hsl(var(--hue), 10%, 90%);
+	--foreground: hsl(var(--hue), 10%, 10%);
+	--border: rgba(255, 255, 255, 0.301);
+	--primary-color: hsl(var(--hue), 90%, 50%);
+	--transition-duration: 0.3s;
+	--transition-timing: cubic-bezier(0.76, 0.05, 0.24, 0.95);
+	--transition-timing-in: cubic-bezier(0.76, 0.05, 0.86, 0.06);
+	--transition-timing-out: cubic-bezier(0.05, 0.76, 0.06, 0.86);
     font-size: calc(40px + 40*(1700px - 320px) / 2240);
 }
 .default-page-style,
 .switch__input {
-	color: var(--fg);
+	color: var(--foreground);
 	font: 1em/1.5 sans-serif;
 }
 .default-page-style {
-	background-color: var(--bg);
+	background-color: var(--background);
 	display: flex;
 	height: 100vh;
 	transition:
-		background-color var(--trans-dur),
-		color var(--trans-dur),
-		border var(--trans-dur);
+		background-color var(--transition-duration),
+		color var(--transition-duration),
+		border var(--transition-duration);
 }
 .default-page-style:has(.switch__input:checked) {
-	background-color: var(--fg);
-	color: var(--bg);
+	background-color: var(--foreground);
+	color: var(--background);
 }
 .default-page-style:has(.switch__input:checked) .country-container {
 	background-color: transparent;
 	box-shadow: none;
-	border: 1px solid var(--bd);
+	border: 1px solid var(--border);
 }
-
 .default-page-style:has(.switch__input:checked) .search-input {
-	background: hsl(var(--hue),10%,10%);
-	border: 1px solid var(--bd);
+	background: hsl(var(--hue), 10%, 10%);
+	border: 1px solid var(--border);
 }
-
 .default-page-style:has(.switch__input:checked) .search-form {
 	background: none;
 }
-
 .default-page-style:has(.switch__input:checked) .select-box__input-text {
-	background: hsl(var(--hue),10%,10%);
-	border: 1px solid var(--bd);
+	background: hsl(var(--hue), 10%, 10%);
+	border: 1px solid var(--border);
 }
-
 .default-page-style:has(.switch__input:checked) .select-box__option {
-	background: hsl(var(--hue),10%,10%);
-	border: 1px solid var(--bd);
+	background: hsl(var(--hue), 10%, 10%);
+	border: 1px solid var(--border);
 }
-
 .switch {
 	position: relative;
     height: 35px;
@@ -70,28 +65,28 @@
     width: 25px;
     height: 25px;
 	transition:
-		opacity calc(var(--trans-dur) / 2),
-		transform calc(var(--trans-dur) / 2);
+		opacity calc(var(--transition-duration) / 2),
+		transform calc(var(--transition-duration) / 2);
 }
 .switch__icon polyline {
-	transition: stroke-dashoffset calc(var(--trans-dur) / 2);
+	transition: stroke-dashoffset calc(var(--transition-duration) / 2);
 }
 .switch__icon--light,
 .switch__icon--light polyline {
-	transition-delay: calc(var(--trans-dur) / 2);
-	transition-timing-function: var(--trans-timing-out);
+	transition-delay: calc(var(--transition-duration) / 2);
+	transition-timing-function: var(--transition-timing-out);
 }
 .switch__icon--dark {
 	opacity: 0;
 	transform: translateX(-0.75em) rotate(30deg) scale(0.75);
-	transition-timing-function: var(--trans-timing-in);
+	transition-timing-function: var(--transition-timing-in);
 }
 .switch__input {
-	background-color: hsl(210,90%,70%);
+	background-color: hsl(210, 90%, 70%);
 	border-radius: 0.75em;
 	box-shadow:
-		0 0 0 0.125em hsla(var(--hue),90%,50%,0),
-		0.125em 0.125em 0.25em hsla(var(--hue),90%,10%,0.2);
+		0 0 0 0.125em hsla(var(--hue), 90%, 50%, 0),
+		0.125em 0.125em 0.25em hsla(var(--hue), 90%, 10%, 0.2);
 	outline: transparent;
 	position: relative;
     width: 130px;
@@ -100,13 +95,13 @@
 	appearance: none;
 	-webkit-tap-highlight-color: transparent;
 	transition:
-		background-color var(--trans-dur) var(--trans-timing),
+		background-color var(--transition-duration) var(--transition-timing),
 		box-shadow 0.15s linear;
 }
 .switch__input:focus-visible {
 	box-shadow:
-		0 0 0 0.125em hsl(var(--hue),90%,50%),
-		0.125em 0.125em 0.25em hsla(var(--hue),90%,10%,0.2);
+		0 0 0 0.125em hsl(var(--hue), 90%, 50%),
+		0.125em 0.125em 0.25em hsla(var(--hue), 90%, 10%, 0.2);
 }
 .switch__input:before,
 .switch__input:after {
@@ -115,40 +110,40 @@
 	position: absolute;
 }
 .switch__input:before {
-	background-color: hsl(50,90%,50%);
+	background-color: hsl(50, 90%, 50%);
 	border-radius: inherit;
-	mask-image: linear-gradient(120deg,hsl(0,0%,0%) 20%,hsla(0,0%,0%,0) 80%);
-	-webkit-mask-image: linear-gradient(120deg,hsl(0,0%,0%) 20%,hsla(0,0%,0%,0) 80%);
+	mask-image: linear-gradient(120deg, hsl(0, 0%, 0%) 20%, hsla(0, 0%, 0%, 0) 80%);
+	-webkit-mask-image: linear-gradient(120deg, hsl(0, 0%, 0%) 20%, hsla(0, 0%, 0%, 0) 80%);
 	inset: 0;
-	transition: background-color var(--trans-dur) var(--trans-timing);
+	transition: background-color var(--transition-duration) var(--transition-timing);
 }
 .switch__input:after {
-	background-color: hsl(0,0%,100%);
+	background-color: hsl(0, 0%, 100%);
 	border-radius: 50%;
-	box-shadow: 0.05em 0.05em 0.05em hsla(var(--hue),90%,10%,0.1);
+	box-shadow: 0.05em 0.05em 0.05em hsla(var(--hue), 90%, 10%, 0.1);
     left: 3.2%;
     top: 8.3%;
     width: 25px;
     height: 25px;
 	transition:
-		background-color var(--trans-dur) var(--trans-timing),
-		transform var(--trans-dur) var(--trans-timing);
+		background-color var(--transition-duration) var(--transition-timing),
+		transform var(--transition-duration) var(--transition-timing);
 	z-index: 1;
 }
 .switch__input:checked {
-	background-color: hsl(290,90%,40%);
+	background-color: hsl(290, 90%, 40%);
 }
 .switch__input:checked:before {
-	background-color: hsl(220,90%,40%);
+	background-color: hsl(220, 90%, 40%);
 }
 .switch__input:checked:after {
-	background-color: hsl(0,0%,0%);
+	background-color: hsl(0, 0%, 0%);
 	transform: translateX(1.5em);
 }
 .switch__input:checked ~ .switch__icon--light,
 .switch__input:checked ~ .switch__icon--light polyline {
 	transition-delay: 0s;
-	transition-timing-function: var(--trans-timing-in);
+	transition-timing-function: var(--transition-timing-in);
 }
 .switch__input:checked ~ .switch__icon--light {
 	opacity: 0;
@@ -160,12 +155,6 @@
 .switch__input:checked ~ .switch__icon--dark {
 	opacity: 1;
 	transform: translateX(-1.5em);
-	transition-delay: calc(var(--trans-dur) / 2);
-	transition-timing-function: var(--trans-timing-out);
-}
-.switch__sr {
-	overflow: hidden;
-	position: absolute;
-	width: 1px;
-	height: 1px;
+	transition-delay: calc(var(--transition-duration) / 2);
+	transition-timing-function: var(--transition-timing-out);
 }

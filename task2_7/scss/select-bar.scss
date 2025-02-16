@@ -1,5 +1,5 @@
 :root {
-  --dur: 0.3s;
+  --duration: 0.3s;
 }
 
 .select-box-wrapper {
@@ -70,7 +70,7 @@
     border-radius: 50px;
     font-size: 20px;
     color: gray;
-    transition: all var(--dur);
+    transition: all var(--duration);
   }
 
   &__list {

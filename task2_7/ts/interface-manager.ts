@@ -2,7 +2,7 @@ import { getAllCountriesCcn3, getAllCountries, getCountryByName, getAllCountries
 
 let observer: IntersectionObserver | undefined;
 
-async function addCountriesToInterface(action: any, actionParameter?: string) {
+async function renderCountries(action: any, actionParameter?: string) {
     let ccn3Counter = 0;
     const allCcn3 = await getAllCountriesCcn3();
     const sentinel = document.getElementById('sentinel') as HTMLElement;
@@ -73,7 +73,7 @@ export async function populateWithCountries(): Promise<void> {
     document.addEventListener("DOMContentLoaded", () => {
         const countries = document.querySelectorAll(".country-container");
         countries.forEach(country => country.remove());
-        addCountriesToInterface(getAllCountries);
+        renderCountries(getAllCountries);
     })
 
     const form = document.getElementById("search-form") as HTMLFormElement;
@@ -88,7 +88,7 @@ export async function populateWithCountries(): Promise<void> {
         countries.forEach(country => country.remove());
         event.preventDefault();
         const searchValue = searchInput.value.trim();
-        addCountriesToInterface(getCountryByName, searchValue);
+        renderCountries(getCountryByName, searchValue);
     })
 
     const regionInputs = document.querySelectorAll<HTMLInputElement>(".select-box__input");
@@ -106,9 +106,9 @@ export async function populateWithCountries(): Promise<void> {
                 if (selectedValue === 'all') {
                     const countries = document.querySelectorAll(".country-container");
                     countries.forEach(country => country.remove());
-                    addCountriesToInterface(getAllCountries);
+                    renderCountries(getAllCountries);
                 } else {
-                    addCountriesToInterface(getAllCountriesByRegion, selectedValue);
+                    renderCountries(getAllCountriesByRegion, selectedValue);
                 }
             }
         })
