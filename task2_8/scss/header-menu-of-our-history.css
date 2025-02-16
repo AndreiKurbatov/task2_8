@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 .main-page-style {
     margin: 0px;
@@ -8,6 +9,10 @@
     /* to delete*/
 
     .header-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
         .head-menu-container {
             z-index: 2;
@@ -22,6 +27,8 @@
             box-sizing: border-box;
             padding: 0px 20px 0px 20px;
             transition: height 0.5s ease;
+            top: 0%;
+            left: 0%;
 
             .head-menu-line-container {
                 display: flex;
@@ -185,7 +192,31 @@
             }
 
             .item:nth-child(1) {
-                color: rgb(197, 8, 8);
+                color:rgb(197, 8, 8);
+            }
+        }
+
+        .history-header-container {
+            width: 100%;
+            background-color: rgb(221, 221, 221);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .home-header {
+                margin-top: 50px;
+                font-weight: 700;
+                font-size: 21px;
+                color: gray;
+            }
+
+            .history-header {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                font-weight: 700;
+                font-size: 45px;
+                color: black;
             }
         }
     }

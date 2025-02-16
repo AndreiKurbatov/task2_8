@@ -201,5 +201,27 @@
                 margin-bottom: 10px;
             }
         }
+
+        .head-menu-items-container {
+            margin-top: 50px;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            align-self: center;
+            font-family: "Poppins", serif;
+            font-weight: 500;
+            font-size: 30px;
+
+            .item {
+                line-height: 2.0;
+                cursor: pointer;
+            }
+
+            .item:nth-child(1) {
+                color:rgb(197, 8, 8);
+            }
+        }
     }
 }

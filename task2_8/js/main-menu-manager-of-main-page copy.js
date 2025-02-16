@@ -1,13 +1,13 @@
-const menuOptionsButton = document.getElementById("menu-options-button") as HTMLElement;
-const headMenuContainer = document.getElementById("head-menu-container") as HTMLElement;
-const rightMenuButton = document.getElementById("right-menu-button") as HTMLElement;
-const headMenuItemsContainer = document.getElementById("head-menu-items-container") as HTMLElement;
-const headMenuLineContainer = document.getElementById("head-menu-line-container") as HTMLElement;
-const closeHeadMenuItem = document.getElementById("close-head-menu-item") as HTMLElement;
-const headerPhoto = document.querySelector(".parallax-photo-container .photo") as HTMLElement;
-const parallaxHeader = document.querySelector(".parallax-photo-container .header") as HTMLElement;
-const parallaxParagraph = document.querySelector(".parallax-photo-container .paragraph") as HTMLElement;
-
+"use strict";
+const menuOptionsButton = document.getElementById("menu-options-button");
+const headMenuContainer = document.getElementById("head-menu-container");
+const rightMenuButton = document.getElementById("right-menu-button");
+const headMenuItemsContainer = document.getElementById("head-menu-items-container");
+const headMenuLineContainer = document.getElementById("head-menu-line-container");
+const closeHeadMenuItem = document.getElementById("close-head-menu-item");
+const headerPhoto = document.querySelector(".parallax-photo-container .photo");
+const parallaxHeader = document.querySelector(".parallax-photo-container .header");
+const parallaxParagraph = document.querySelector(".parallax-photo-container .paragraph");
 menuOptionsButton.addEventListener("click", () => {
     const totalHeight = document.documentElement.scrollHeight;
     headMenuContainer.style.height = String(totalHeight) + 'px';
@@ -20,8 +20,7 @@ menuOptionsButton.addEventListener("click", () => {
     headerPhoto.style.filter = 'brightness(0.4)';
     parallaxHeader.style.color = 'rgb(119 104 104)';
     parallaxParagraph.style.color = 'rgb(119 104 104)';
-})
-
+});
 closeHeadMenuItem.addEventListener("click", () => {
     headMenuContainer.style.height = '';
     headMenuContainer.style.alignItems = '';
@@ -33,4 +32,4 @@ closeHeadMenuItem.addEventListener("click", () => {
     headerPhoto.style.filter = '';
     parallaxHeader.style.color = '';
     parallaxParagraph.style.color = '';
-})
+});
