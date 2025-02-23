@@ -4,134 +4,175 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-/* Raggruppa tutto il sistema di rating in .star-rating per isolamento */
-
-/* Nasconde i radio button */
-.star-rating input[name="star"] {
-  display: inline-block;
-  width: 0;
-  opacity: 0;
-  margin-left: -2px;
-}
-
-/* Nasconde lo SVG di riferimento */
-.star-rating .star-source {
-  width: 0;
-  height: 0;
-  visibility: hidden;
-}
-
-/* Impostazioni base per le stelle */
-.star-rating .star {
-  width: 3rem;
-  height: 3rem;
-  padding: 0.15rem;
-  color: transparent; /* inizialmente "vuota" */
-  transition: color 0.2s ease-in-out;
-}
-
-/* Contenitore delle stelle (ordine inverso per usare il selettore ~) */
-.star-rating .star-container {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Cursor pointer per le etichette */
-.star-rating label {
-  cursor: pointer;
-}
-
-/* Quando l'utente passa il mouse (o il radio è attivo/focus) mostra la stella “riempita” */
-.star-rating label:hover ~ label .star,
-.star-rating svg.star:hover,
-.star-rating input[name="star"]:focus ~ label .star,
-.star-rating input[name="star"]:checked ~ label .star {
-  color: #d62a9d;
-}
-
-/* Effetti di animazione quando viene selezionata una stella */
-.star-rating input[name="star"]:checked + label .star {
-  animation: starred 0.5s;
-}
-.star-rating input[name="star"]:checked + label {
-  animation: scaleup 1s;
-}
-
-@keyframes scaleup {
-  from { transform: scale(1.2); }
-  to { transform: scale(1); }
-}
-
-@keyframes starred {
-  from { color: #600040; }
-  to { color: #d62a9d; }
-}
-
-  </style>
   <title>Document</title>
+  <style>
+    body {
+      background: #33ab83;
+    }
+
+    button {
+      appearance: none;
+      background: transparent;
+      border: 0;
+      outline: 0;
+    }
+
+    .paginate {
+      position: relative;
+      margin: 10px;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      transform: translate3d(0, 0, 0);
+      /* Fix flickering in WebKit */
+
+      position: absolute;
+      top: 50%;
+      margin-top: -20px;
+      filter: drop-shadow(0 2px 0px rgba(0, 0, 0, 0.2));
+    }
+
+    .paginate i {
+      position: absolute;
+      top: 40%;
+      left: 0;
+      width: 50px;
+      height: 5px;
+      border-radius: 2.5px;
+      background: #fff;
+      transition: all 0.15s ease;
+    }
+
+    .paginate.left {
+      right: 58%;
+    }
+
+    .paginate.left i {
+      transform-origin: 0% 50%;
+    }
+
+    .paginate.left i:first-child {
+      transform: rotate(40deg);
+    }
+
+    .paginate.left i:last-child {
+      transform: rotate(-40deg);
+    }
+
+    .paginate.left:hover i:first-child {
+      transform: rotate(30deg);
+    }
+
+    .paginate.left:hover i:last-child {
+      transform: rotate(-30deg);
+    }
+
+    .paginate.left:active i:first-child {
+      transform: translateX(1px) rotate(25deg);
+    }
+
+    .paginate.left:active i:last-child {
+      transform: translateX(1px) rotate(-25deg);
+    }
+
+    .paginate.left[data-state="disabled"] i:first-child,
+    .paginate.left[data-state="disabled"] i:last-child {
+      transform: translateX(-5px) rotate(0deg);
+    }
+
+    .paginate.left[data-state="disabled"]:hover i:first-child,
+    .paginate.left[data-state="disabled"]:hover i:last-child {
+      transform: translateX(-5px) rotate(0deg);
+    }
+
+    .paginate.right {
+      left: 58%;
+    }
+
+    .paginate.right i {
+      transform-origin: 100% 50%;
+    }
+
+    .paginate.right i:first-child {
+      transform: rotate(40deg);
+    }
+
+    .paginate.right i:last-child {
+      transform: rotate(-40deg);
+    }
+
+    .paginate.right:hover i:first-child {
+      transform: rotate(30deg);
+    }
+
+    .paginate.right:hover i:last-child {
+      transform: rotate(-30deg);
+    }
+
+    .paginate.right:active i:first-child {
+      transform: translateX(1px) rotate(25deg);
+    }
+
+    .paginate.right:active i:last-child {
+      transform: translateX(1px) rotate(-25deg);
+    }
+
+    .paginate.right[data-state="disabled"] i:first-child,
+    .paginate.right[data-state="disabled"] i:last-child {
+      transform: translateX(5px) rotate(0deg);
+    }
+
+    .paginate.right[data-state="disabled"]:hover i:first-child,
+    .paginate.right[data-state="disabled"]:hover i:last-child {
+      transform: translateX(5px) rotate(0deg);
+    }
+
+    .paginate[data-state="disabled"] {
+      opacity: 0.3;
+      cursor: default;
+    }
+
+    .counter {
+      text-align: center;
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      margin-top: -15px;
+      font-size: 30px;
+      font-family: Helvetica, sans-serif;
+      text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.2);
+      color: #fff;
+    }
+  </style>
 </head>
 
 <body>
-<!-- Sistema di Rating (Solo Stelle) -->
-<div class="star-rating">
-  <!-- SVG di riferimento nascosto -->
-  <div class="star-source">
-    <svg>
-      <linearGradient x1="50%" y1="5.41294643%" x2="87.5527344%" y2="65.4921875%" id="grad">
-        <stop stop-color="#bf209f" offset="0%"></stop>
-        <stop stop-color="#d62a9d" offset="60%"></stop>
-        <stop stop-color="#ED009E" offset="100%"></stop>
-      </linearGradient>
-      <symbol id="star" viewBox="153 89 106 108">
-        <polygon stroke="url(#grad)" stroke-width="5" fill="currentColor"
-          points="206 162.5 176.610737 185.45085 189.356511 150.407797 158.447174 129.54915 195.713758 130.842203 206 95 216.286242 130.842203 253.552826 129.54915 222.643489 150.407797 235.389263 185.45085">
-        </polygon>
-      </symbol>
-    </svg>
-  </div>
+  <div class="counter"></div>
 
-  <!-- Contenitore delle stelle -->
-  <div class="star-container">
-    <input type="radio" name="star" id="five">
-    <label for="five">
-      <svg class="star">
-        <use xlink:href="#star" />
-      </svg>
-    </label>
+  <button class="paginate left"><i></i><i></i></button>
+  <button class="paginate right"><i></i><i></i></button>
 
-    <input type="radio" name="star" id="four">
-    <label for="four">
-      <svg class="star">
-        <use xlink:href="#star" />
-      </svg>
-    </label>
+  <script>
+    var pr = document.querySelector('.paginate.left');
+    var pl = document.querySelector('.paginate.right');
 
-    <input type="radio" name="star" id="three">
-    <label for="three">
-      <svg class="star">
-        <use xlink:href="#star" />
-      </svg>
-    </label>
+    pr.onclick = slide.bind(this, -1);
+    pl.onclick = slide.bind(this, 1);
 
-    <input type="radio" name="star" id="two">
-    <label for="two">
-      <svg class="star">
-        <use xlink:href="#star" />
-      </svg>
-    </label>
+    var index = 0,
+      total = 5;
 
-    <input type="radio" name="star" id="one">
-    <label for="one">
-      <svg class="star">
-        <use xlink:href="#star" />
-      </svg>
-    </label>
-  </div>
-</div>
+    function slide(offset) {
+      index = Math.min(Math.max(index + offset, 0), total - 1);
 
+      document.querySelector('.counter').innerHTML = (index + 1) + ' / ' + total;
+
+      pr.setAttribute('data-state', index === 0 ? 'disabled' : '');
+      pl.setAttribute('data-state', index === total - 1 ? 'disabled' : '');
+    }
+
+    slide(0);
+  </script>
 </body>
 
 </html>

@@ -1,0 +1,86 @@
+.pagination-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.paginate {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    filter: drop-shadow(0 2px 0px rgba(0, 0, 0, 0.2));
+}
+
+.paginate i {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    width: 40px;
+    height: 5px;
+    border-radius: 2.5px;
+    background: #333;
+    transition: all 0.15s ease;
+}
+
+.paginate.left i {
+    transform-origin: 0% 50%;
+}
+
+.paginate.left i:first-child {
+    transform: rotate(40deg);
+}
+
+.paginate.left i:last-child {
+    transform: rotate(-40deg);
+}
+
+.paginate.left:hover i:first-child {
+    transform: rotate(30deg);
+}
+
+.paginate.left:hover i:last-child {
+    transform: rotate(-30deg);
+}
+
+.paginate.left[data-state="disabled"] {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.paginate.right i {
+    transform-origin: 100% 50%;
+}
+
+.paginate.right i:first-child {
+    transform: rotate(40deg);
+}
+
+.paginate.right i:last-child {
+    transform: rotate(-40deg);
+}
+
+.paginate.right:hover i:first-child {
+    transform: rotate(30deg);
+}
+
+.paginate.right:hover i:last-child {
+    transform: rotate(-30deg);
+}
+
+.paginate.right[data-state="disabled"] {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.counter {
+    text-align: center;
+    font-size: 20px;
+    font-family: Helvetica, sans-serif;
+    color: #333;
+}
