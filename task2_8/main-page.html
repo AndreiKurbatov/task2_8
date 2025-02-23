@@ -36,6 +36,27 @@
                     </div>
                 </div>
             </div>
+            <div id="head-menu-line-container-desktop" class="head-menu-line-container-desktop">
+                <div id="main-header-wrapper" class="header-wrapper">
+                    <span id="header-prefix-desktop" class="header-prefix">Barrel</span><span id="header-postfix-desktop" class="header-postfix">Bloom</span>
+                </div>
+                <div class="head-menu-items-container">
+                    <div class="item">SHOP</div>
+                    <div class="item">MAINPAGE</div>
+                    <div class="item">OUR HISTORY</div>
+                    <div class="item">ALL ITEMS</div>
+                </div>
+                <div id="right-menu-button" class="right-menu-container">
+                    <div id="shopping-cart-container-desktop" class="shopping-cart-container">
+                        <img src="./images/online-shopping_1.png" class="shopping-cart-icon-1" alt="shopping cart" />
+                        <img src="./images/online-shopping_2.png" class="shopping-cart-icon-2" alt="shopping cart" />
+                    </div>
+                    <div class="wine-container">
+                        <img src="/images/wine_1.png" class="wine-icon-1" alt="wine icon" />
+                        <img src="/images/wine_2.png" class="wine-icon-2" alt="wine icon" />
+                    </div>
+                </div>
+            </div>
             <div id="head-menu-items-container" class="head-menu-items-container">
                 <div class="item">SHOP</div>
                 <div class="item">MAINPAGE</div>
@@ -70,8 +91,8 @@
                             </div>
                         </div>
                         <div class="items-amount-container">
-                            <div class="items-amount">1</div> <!--use before after-->
-                            <div class="remove-item">&#x2715;</div> <!--for the title i think you can use :after-->
+                            <div class="items-amount">1</div>
+                            <div class="remove-item">&#x2715;</div>
                         </div>
                     </div>
                     <div class="item-container">
@@ -83,8 +104,8 @@
                             </div>
                         </div>
                         <div class="items-amount-container">
-                            <div class="items-amount">1</div> <!--use before after-->
-                            <div class="remove-item">&#x2715;</div> <!--for the title i think you can use :after-->
+                            <div class="items-amount">1</div>
+                            <div class="remove-item">&#x2715;</div>
                         </div>
                     </div>
                 </div>
@@ -96,9 +117,10 @@
             </div>
         </div>
         <div id="parallax-photo-container" class="parallax-photo-container">
-            <img src="./images/pexels-ionelceban-2580989.jpg" class="photo" alt="wine shop photo" />
-            <div class="header">Discover<br>winemaking</div>
-            <div class="paragraph">Every bottle holds a story, every sip unveils a journey—explore the finest
+            <img id="parallax-photo" src="./images/pexels-ionelceban-2580989.jpg" class="photo" alt="wine shop photo" />
+            <div id="parallax-header" class="header">Discover<br>winemaking</div>
+            <div id="parallax-paragraph" class="paragraph">Every bottle holds a story, every sip unveils a
+                journey—explore the finest
                 wines crafted with passion, tradition, and a dedication to excellence, bringing the world’s best
                 flavors straight to your glass.
             </div>
@@ -149,10 +171,12 @@
             <div class="paragraph">Lorem ipsum dolor sit amet consectetur. Molestie turpis quis turpis fermentum egestas
                 bibendum.Lorem ipsum dolor sit amet consectetur.
             </div>
-            <form class="form-container" action="#">
-                <input class="email-input" type="email" placeholder="Enter email" required>
-            </form>
-            <button class="subscribe-button">Subscribe</button>
+            <div class="subscribe-input-container">
+                <form class="form-container" action="#">
+                    <input class="email-input" type="email" placeholder="Enter email" required>
+                </form>
+                <button class="subscribe-button">Subscribe</button>
+            </div>
         </div>
     </main>
     <footer class="footer-container">
@@ -202,6 +226,7 @@
         </div>
         <div class="rights-note">Storelogo, 2025 All rights reserved</div>
     </footer>
+    <script type="module" src="./js/parallax.js"></script>
     <script type="module" src="./js/main-menu-manager-of-main-page.js"></script>
     <script type="module" src="./js/your-bag.js"></script>
 </body>

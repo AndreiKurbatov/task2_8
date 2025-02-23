@@ -47,3 +47,32 @@
         }
     }
 }
+
+@media (min-width: 768px) {
+    .main-container {
+        .all-items-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 0px;
+            width: 100%;
+            margin-bottom: 20px;
+
+            .item {
+                border-radius: 0px;
+                border: 0px;
+                border-bottom: 1px solid rgba(165, 42, 42, 0.404);
+                width: 100%;
+
+                &:first-child {
+                    border-top: none;
+                }
+
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+}

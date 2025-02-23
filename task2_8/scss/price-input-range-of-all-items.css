@@ -96,11 +96,11 @@
     line-height: 30px;
     text-align: center;
     font-weight: bold;
-    padding-top: 22px;
+    padding-top: 15px;
     box-sizing: border-box;
     border: 2px solid brown;
     margin-top: 20px;
-    margin-left: -38px;
+    margin-left: -35px;
     left: attr(value);
     color: brown;
     font-style: normal;
@@ -114,9 +114,7 @@
       font-size: 25px;
       letter-spacing: 0.07em;
       margin-top: -14px;
-      margin-left: 6px;
+      margin-left: 4px;
     }
-
   }
-
 }

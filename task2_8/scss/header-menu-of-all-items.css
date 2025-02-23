@@ -4,7 +4,6 @@
 .main-page-style {
     margin: 0px;
     padding: 0px;
-    height: 200vh;
     overflow-x: hidden;
     /* to delete*/
 
@@ -185,7 +184,7 @@
             gap: 20px;
 
             .small-header {
-                margin-top: 60px;
+                margin-top: 111px;
                 color: gray;
                 font-size: 20px;
                 font-weight: 500;
@@ -198,7 +197,8 @@
                 font-weight: 700;
                 color: black;
                 font-family: "Playfair Display", serif;
-                margin-bottom: 10px;
+                margin-bottom: 18px;
+                transform: translateY(-19px);
             }
         }
 
@@ -221,6 +221,206 @@
 
             .item:nth-child(1) {
                 color:rgb(197, 8, 8);
+            }
+        }
+    }
+
+    .head-menu-line-container-desktop {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .main-page-style {
+
+        .header-container {
+
+            .head-menu-container {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items:start;
+                height: 70px;
+                background-color: white;
+                transition: height 0.5s ease, background-color 0.3s ease;
+
+                .head-menu-line-container {
+                    display: none;
+                }
+
+                .head-menu-line-container-desktop {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 100%;
+                    padding: 0 20px;
+                    box-sizing: border-box;
+                    transform:translateY(13px);
+
+                    .header-wrapper {
+                        flex: 1;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-family: "Poppins", serif;
+                        font-weight: 900;
+                        font-size: 30px;
+                        position: relative;
+                        width: 35%;
+
+                        .header-prefix {
+                            color: brown;
+                            transition: color 0.3s ease;
+                        }
+
+                        .header-postfix {
+                            margin-left: 1px;
+                            position: relative;
+                            z-index: 2;
+                            color: brown;
+                            background-color: none;
+                            display: flex;
+                            align-items: center;
+                            height: 27px;
+                            transition: color 0.3s ease;
+                        }
+                    }
+
+                    .head-menu-items-container {
+                        flex: 1;
+                        margin-top: 0px;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        color: black;
+                        align-self: center;
+                        font-family: "Poppins", serif;
+                        font-weight: 500;
+                        font-size: 30px;
+                        width: 100%;
+                        gap: 50px;
+
+                        .item {
+                            line-height: 2.0;
+                            cursor: pointer;
+                            font-size: 15px;
+                        }
+
+                        .item:nth-child(1) {
+                            color: rgb(197, 8, 8);
+                            transition: color 0.3s ease;
+                        }
+                    }
+
+                    .right-menu-container {
+                        flex: 1;
+                        position: relative;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 40px;
+                        width: 60px;
+                        height: 20px;
+
+                        .shopping-cart-container {
+                            position: relative;
+                            width: 30px;
+                            height: 30px;
+
+                            .shopping-cart-icon-1,
+                            .shopping-cart-icon-2 {
+                                position: absolute;
+                                left: 0;
+                                top: 0;
+                                transition: opacity 0.3s ease-in-out;
+                                width: 30px;
+                                height: 30px;
+                                cursor: pointer;
+                            }
+
+                            .shopping-cart-icon-1 {
+                                opacity: 1;
+                            }
+
+                            .shopping-cart-icon-2 {
+                                opacity: 0;
+                            }
+
+                            &:hover .shopping-cart-icon-1 {
+                                opacity: 0;
+                            }
+
+                            &:hover .shopping-cart-icon-2 {
+                                opacity: 1;
+                            }
+                        }
+
+                        .wine-container {
+                            position: relative;
+                            width: 30px;
+                            height: 30px;
+
+                            .wine-icon-1,
+                            .wine-icon-2 {
+                                position: absolute;
+                                left: 0;
+                                top: 0;
+                                transition: opacity 0.3s ease-in-out;
+                                width: 30px;
+                                height: 30px;
+                                cursor: pointer;
+                            }
+
+                            .wine-icon-1 {
+                                opacity: 1;
+                            }
+
+                            .wine-icon-2 {
+                                opacity: 0;
+                            }
+
+                            &:hover .wine-icon-1 {
+                                opacity: 0;
+                            }
+
+                            &:hover .wine-icon-2 {
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+
+                .head-menu-line-container {
+                    display: none;
+                }
+            }
+
+            .head-menu-items-container {
+                display: none;
+            }
+
+            .history-header-container {
+
+                .home-header {
+                    margin-top: 120px;
+                }
+
+                .history-header {
+                    margin-bottom: 40px;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1400px) {
+    .main-page-style {
+        .header-container {
+            .head-menu-container {
+                .head-menu-line-container-desktop {
+                    transform:translateY(4px);
+                }
             }
         }
     }

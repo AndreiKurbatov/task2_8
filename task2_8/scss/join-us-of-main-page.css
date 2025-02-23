@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
-
-
 .subscribe-container {
     margin-top: 28px;
     background-color: rgb(235, 235, 235);
@@ -43,17 +41,25 @@
             transition: border-color 0.5s ease;
             font-family: "Poppins", serif;
             color: rgb(63, 45, 22);
-          }
+        }
 
-          .email-input::placeholder {
+        .email-input::placeholder {
             font-family: "Poppins", serif;
             color: #777;
             font-size: 25px;
-          }
+        }
 
-          .email-input:focus {
+        .email-input:focus {
             border-color: red;
         }
+    }
+
+    .subscribe-input-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
     }
 
     .subscribe-button {
@@ -79,3 +85,38 @@
     }
 }
 
+@media (min-width: 768px) {
+
+    .subscribe-container {
+        padding: 90px 0px 90px 0px;
+
+        .header {
+            margin-bottom: 20px;
+        }
+
+        .paragraph {
+            width: 80ch;
+            margin-bottom: 30px;
+        }
+
+        .subscribe-input-container {
+            flex-direction: row;
+            width: 40%;
+            min-width: 632px;
+
+            .form-container {
+                width: 100%;
+
+                .email-input {
+                    box-sizing: border-box;
+                    height: 85px;
+                }
+            }
+
+            .subscribe-button {
+                width: 60%;
+                margin-bottom: 30px;
+            }
+        }
+    }
+}

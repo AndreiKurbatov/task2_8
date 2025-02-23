@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./scss/header-menu-of-all-items.css">
     <link rel="stylesheet" href="./scss/footer-shop-info-of-all-items.css">
-    <link rel="stylesheet" href="./scss/items-management-panel-of-all-items.css">
+    <link rel="stylesheet" href="./scss/items-panel-of-all-items.css">
     <link rel="stylesheet" href="./scss/search-bar-of-all-items.css">
     <link rel="stylesheet" href="./scss/price-input-range-of-all-items.css">
     <link rel="stylesheet" href="./scss/items-list-of-all-items.css">
@@ -35,6 +35,27 @@
                     </div>
                     <div class="wine-container">
                         <img src="/images/wine_1.png" class="wine-icon-1" alt="wine icon" />
+                        <img src="/images/wine_2.png" class="wine-icon-2" alt="wine icon" />
+                    </div>
+                </div>
+            </div>
+            <div id="head-menu-line-container-desktop" class="head-menu-line-container-desktop">
+                <div id="main-header-wrapper-desktop" class="header-wrapper">
+                    <span id="header-prefix-desktop" class="header-prefix">Barrel</span><span id="header-postfix-desktop" class="header-postfix">Bloom</span>
+                </div>
+                <div class="head-menu-items-container">
+                    <div class="item">SHOP</div>
+                    <div class="item">MAINPAGE</div>
+                    <div class="item">OUR HISTORY</div>
+                    <div class="item">ALL ITEMS</div>
+                </div>
+                <div id="right-menu-button" class="right-menu-container">
+                    <div id="shopping-cart-container-desktop" class="shopping-cart-container">
+                        <img src="./images/online-shopping (2).png" class="shopping-cart-icon-1" alt="shopping cart" />
+                        <img src="./images/online-shopping_2.png" class="shopping-cart-icon-2" alt="shopping cart" />
+                    </div>
+                    <div class="wine-container">
+                        <img src="/images/wine (4).png" class="wine-icon-1" alt="wine icon" />
                         <img src="/images/wine_2.png" class="wine-icon-2" alt="wine icon" />
                     </div>
                 </div>
@@ -98,49 +119,51 @@
             </div>
             <div class="total-price-wrapper">
                 <div class="total-price">Total:</div>
-                <div class="total-price">$190.80</div>
+                <div id="total-sum" class="total-price">$190.80</div>
             </div>
             <div class="checkout-button">Checkout</div>
         </div>
     </header>
     <main class="main-container">
-        <div class="search-container">
-            <div class="search-box">
-                <div class="search-icon"><i class="fa fa-search search-icon"></i></div>
-                <form action="" class="search-form">
-                    <input type="text" placeholder="Search" id="search" class="search" autocomplete="off">
-                </form>
-                <svg class="search-border" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                    xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" x="0px" y="0px" viewBox="0 0 671 111"
-                    style="enable-background:new 0 0 671 111;" xml:space="preserve">
-                    <path class="border" d="M335.5,108.5h-280c-29.3,0-53-23.7-53-53v0c0-29.3,23.7-53,53-53h280" />
-                    <path class="border" d="M335.5,108.5h280c29.3,0,53-23.7,53-53v0c0-29.3-23.7-53-53-53h-280" />
-                </svg>
-                <div id="go-icon" class="go-icon"><i class="fa fa-arrow-right"></i></div>
+        <div class="search-management-container-desktop">
+            <div class="search-container">
+                <div class="search-box">
+                    <div class="search-icon"><i class="fa fa-search search-icon"></i></div>
+                    <form action="" class="search-form">
+                        <input type="text" placeholder="Search" id="search" class="search" autocomplete="off">
+                    </form>
+                    <svg class="search-border" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" x="0px" y="0px"
+                        viewBox="0 0 671 111" style="enable-background:new 0 0 671 111;" xml:space="preserve">
+                        <path class="border" d="M335.5,108.5h-280c-29.3,0-53-23.7-53-53v0c0-29.3,23.7-53,53-53h280" />
+                        <path class="border" d="M335.5,108.5h280c29.3,0,53-23.7,53-53v0c0-29.3-23.7-53-53-53h-280" />
+                    </svg>
+                    <div id="go-icon" class="go-icon"><i class="fa fa-arrow-right"></i></div>
+                </div>
+            </div>
+            <div class="topic-header">Topic</div>
+            <div class="all-items-container">
+                <div class="item">Red Wine</div>
+                <div class="item">White Wine</div>
+                <div class="item">Rosé Wine</div>
+                <div class="item">All</div>
+            </div>
+            <div class="topic-header">Prise</div>
+            <div class="container">
+                <div id="range-slider" class="range-slider">
+                    <span id="rs-bullet" class="rs-label">0</span>
+                    <input id="rs-range-line" class="rs-range" type="range" value="0" min="0" max="200">
+                </div>
+                <div id="box-minmax" class="box-minmax">
+                    <span>0</span><span>200</span>
+                </div>
             </div>
         </div>
-        <div class="topic-header">Topic</div>
-        <div class="all-items-container">
-            <div class="item">Red Wine</div>
-            <div class="item">White Wine</div>
-            <div class="item">Rosé Wine</div>
-            <div class="item">All</div>
-        </div>
-        <div class="topic-header">Prise</div>
-        <div class="container">
-            <div id="range-slider" class="range-slider">
-                <span id="rs-bullet" class="rs-label">0</span>
-                <input id="rs-range-line" class="rs-range" type="range" value="0" min="0" max="200">
-            </div>
-            <div id="box-minmax" class="box-minmax">
-                <span>0</span><span>200</span>
-            </div>
-        </div>
-        <div class="items-list-container">
+        <div id="items-list-container" class="items-list-container"><!--
             <div class="item-container">
                 <img src="./images/pexels-brettjordan-917831.jpg" class="photo" />
-                <div class="add-button">+</div> <!-- I think your can use :after :before logic -->
+                <div class="add-button">+</div>
                 <div class="photo-description-container">
                     <div class="item-name">Stylish chair</div>
                     <div class="item-price">$120.00</div>
@@ -197,7 +220,7 @@
             </div>
             <div class="item-container">
                 <img src="./images/pexels-brettjordan-917831.jpg" class="photo" />
-                <div class="add-button">+</div> <!-- I think your can use :after :before logic -->
+                <div class="add-button">+</div>
                 <div class="photo-description-container">
                     <div class="item-name">Stylish chair</div>
                     <div class="item-price">$120.00</div>
@@ -254,7 +277,7 @@
             </div>
             <div class="item-container">
                 <img src="./images/pexels-brettjordan-917831.jpg" class="photo" />
-                <div class="add-button">+</div> <!-- I think your can use :after :before logic -->
+                <div class="add-button">+</div>
                 <div class="photo-description-container">
                     <div class="item-name">Stylish chair</div>
                     <div class="item-price">$120.00</div>
@@ -311,7 +334,7 @@
             </div>
             <div class="item-container">
                 <img src="./images/pexels-brettjordan-917831.jpg" class="photo" />
-                <div class="add-button">+</div> <!-- I think your can use :after :before logic -->
+                <div class="add-button">+</div>
                 <div class="photo-description-container">
                     <div class="item-name">Stylish chair</div>
                     <div class="item-price">$120.00</div>
@@ -366,6 +389,234 @@
                     <div class="item-producer">Forest</div>
                 </div>
             </div>
+            <div class="item-container">
+                <img src="./images/pexels-brettjordan-917831.jpg" class="photo" />
+                <div class="add-button">+</div>
+                <div class="photo-description-container">
+                    <div class="item-name">Stylish chair</div>
+                    <div class="item-price">$120.00</div>
+                    <div class="star-rating">
+                        <div class="star-source">
+                            <svg>
+                                <linearGradient x1="50%" y1="5.41294643%" x2="87.5527344%" y2="65.4921875%" id="grad">
+                                    <stop stop-color="#bf209f" offset="0%"></stop>
+                                    <stop stop-color="#d62a9d" offset="60%"></stop>
+                                    <stop stop-color="#ED009E" offset="100%"></stop>
+                                </linearGradient>
+                                <symbol id="star" viewBox="153 89 106 108">
+                                    <polygon stroke="url(#grad)" stroke-width="5" fill="currentColor"
+                                        points="206 162.5 176.610737 185.45085 189.356511 150.407797 158.447174 129.54915 195.713758 130.842203 206 95 216.286242 130.842203 253.552826 129.54915 222.643489 150.407797 235.389263 185.45085">
+                                    </polygon>
+                                </symbol>
+                            </svg>
+                        </div>
+                        <div class="star-container">
+                            <input type="radio" name="star" id="five">
+                            <label for="five">
+                                <svg class="star">
+                                    <use xlink:href="#star" />
+                                </svg>
+                            </label>
+                            <input type="radio" name="star" id="four">
+                            <label for="four">
+                                <svg class="star">
+                                    <use xlink:href="#star" />
+                                </svg>
+                            </label>
+                            <input type="radio" name="star" id="three">
+                            <label for="three">
+                                <svg class="star">
+                                    <use xlink:href="#star" />
+                                </svg>
+                            </label>
+                            <input type="radio" name="star" id="two">
+                            <label for="two">
+                                <svg class="star">
+                                    <use xlink:href="#star" />
+                                </svg>
+                            </label>
+                            <input type="radio" name="star" id="one">
+                            <label for="one">
+                                <svg class="star">
+                                    <use xlink:href="#star" />
+                                </svg>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="item-producer">Forest</div>
+                </div>
+            </div>
+            <div class="item-container">
+                <img src="./images/pexels-brettjordan-917831.jpg" class="photo" />
+                <div class="add-button">+</div>
+                <div class="photo-description-container">
+                    <div class="item-name">Stylish chair</div>
+                    <div class="item-price">$120.00</div>
+                    <div class="star-rating">
+                        <div class="star-source">
+                            <svg>
+                                <linearGradient x1="50%" y1="5.41294643%" x2="87.5527344%" y2="65.4921875%" id="grad">
+                                    <stop stop-color="#bf209f" offset="0%"></stop>
+                                    <stop stop-color="#d62a9d" offset="60%"></stop>
+                                    <stop stop-color="#ED009E" offset="100%"></stop>
+                                </linearGradient>
+                                <symbol id="star" viewBox="153 89 106 108">
+                                    <polygon stroke="url(#grad)" stroke-width="5" fill="currentColor"
+                                        points="206 162.5 176.610737 185.45085 189.356511 150.407797 158.447174 129.54915 195.713758 130.842203 206 95 216.286242 130.842203 253.552826 129.54915 222.643489 150.407797 235.389263 185.45085">
+                                    </polygon>
+                                </symbol>
+                            </svg>
+                        </div>
+                        <div class="star-container">
+                            <input type="radio" name="star" id="five">
+                            <label for="five">
+                                <svg class="star">
+                                    <use xlink:href="#star" />
+                                </svg>
+                            </label>
+                            <input type="radio" name="star" id="four">
+                            <label for="four">
+                                <svg class="star">
+                                    <use xlink:href="#star" />
+                                </svg>
+                            </label>
+                            <input type="radio" name="star" id="three">
+                            <label for="three">
+                                <svg class="star">
+                                    <use xlink:href="#star" />
+                                </svg>
+                            </label>
+                            <input type="radio" name="star" id="two">
+                            <label for="two">
+                                <svg class="star">
+                                    <use xlink:href="#star" />
+                                </svg>
+                            </label>
+                            <input type="radio" name="star" id="one">
+                            <label for="one">
+                                <svg class="star">
+                                    <use xlink:href="#star" />
+                                </svg>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="item-producer">Forest</div>
+                </div>
+            </div>
+            <div class="item-container">
+                <img src="./images/pexels-brettjordan-917831.jpg" class="photo" />
+                <div class="add-button">+</div>
+                <div class="photo-description-container">
+                    <div class="item-name">Stylish chair</div>
+                    <div class="item-price">$120.00</div>
+                    <div class="star-rating">
+                        <div class="star-source">
+                            <svg>
+                                <linearGradient x1="50%" y1="5.41294643%" x2="87.5527344%" y2="65.4921875%" id="grad">
+                                    <stop stop-color="#bf209f" offset="0%"></stop>
+                                    <stop stop-color="#d62a9d" offset="60%"></stop>
+                                    <stop stop-color="#ED009E" offset="100%"></stop>
+                                </linearGradient>
+                                <symbol id="star" viewBox="153 89 106 108">
+                                    <polygon stroke="url(#grad)" stroke-width="5" fill="currentColor"
+                                        points="206 162.5 176.610737 185.45085 189.356511 150.407797 158.447174 129.54915 195.713758 130.842203 206 95 216.286242 130.842203 253.552826 129.54915 222.643489 150.407797 235.389263 185.45085">
+                                    </polygon>
+                                </symbol>
+                            </svg>
+                        </div>
+                        <div class="star-container">
+                            <input type="radio" name="star" id="five">
+                            <label for="five">
+                                <svg class="star">
+                                    <use xlink:href="#star" />
+                                </svg>
+                            </label>
+                            <input type="radio" name="star" id="four">
+                            <label for="four">
+                                <svg class="star">
+                                    <use xlink:href="#star" />
+                                </svg>
+                            </label>
+                            <input type="radio" name="star" id="three">
+                            <label for="three">
+                                <svg class="star">
+                                    <use xlink:href="#star" />
+                                </svg>
+                            </label>
+                            <input type="radio" name="star" id="two">
+                            <label for="two">
+                                <svg class="star">
+                                    <use xlink:href="#star" />
+                                </svg>
+                            </label>
+                            <input type="radio" name="star" id="one">
+                            <label for="one">
+                                <svg class="star">
+                                    <use xlink:href="#star" />
+                                </svg>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="item-producer">Forest</div>
+                </div>
+            </div>
+            <div class="item-container">
+                <img src="./images/pexels-brettjordan-917831.jpg" class="photo" />
+                <div class="add-button">+</div>
+                <div class="photo-description-container">
+                    <div class="item-name">Stylish chair</div>
+                    <div class="item-price">$120.00</div>
+                    <div class="star-rating">
+                        <div class="star-source">
+                            <svg>
+                                <linearGradient x1="50%" y1="5.41294643%" x2="87.5527344%" y2="65.4921875%" id="grad">
+                                    <stop stop-color="#bf209f" offset="0%"></stop>
+                                    <stop stop-color="#d62a9d" offset="60%"></stop>
+                                    <stop stop-color="#ED009E" offset="100%"></stop>
+                                </linearGradient>
+                                <symbol id="star" viewBox="153 89 106 108">
+                                    <polygon stroke="url(#grad)" stroke-width="5" fill="currentColor"
+                                        points="206 162.5 176.610737 185.45085 189.356511 150.407797 158.447174 129.54915 195.713758 130.842203 206 95 216.286242 130.842203 253.552826 129.54915 222.643489 150.407797 235.389263 185.45085">
+                                    </polygon>
+                                </symbol>
+                            </svg>
+                        </div>
+                        <div class="star-container">
+                            <input type="radio" name="star" id="five">
+                            <label for="five">
+                                <svg class="star">
+                                    <use xlink:href="#star" />
+                                </svg>
+                            </label>
+                            <input type="radio" name="star" id="four">
+                            <label for="four">
+                                <svg class="star">
+                                    <use xlink:href="#star" />
+                                </svg>
+                            </label>
+                            <input type="radio" name="star" id="three">
+                            <label for="three">
+                                <svg class="star">
+                                    <use xlink:href="#star" />
+                                </svg>
+                            </label>
+                            <input type="radio" name="star" id="two">
+                            <label for="two">
+                                <svg class="star">
+                                    <use xlink:href="#star" />
+                                </svg>
+                            </label>
+                            <input type="radio" name="star" id="one">
+                            <label for="one">
+                                <svg class="star">
+                                    <use xlink:href="#star" />
+                                </svg>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="item-producer">Forest</div>
+                </div>
+            </div>-->
         </div>
         <div class="more-items-button">More wine</div>
     </main>
@@ -420,6 +671,7 @@
     <script type="module" src="./js/price-input-range-of-all-items.js"></script>
     <script type="module" src="./js/your-bag.js"></script>
     <script type="module" src="./js/main-menu-manager-of-all-items.js"></script>
+    <script type="module" src="./js/index-of-all-items.js"></script>
 </body>
 
 </html>

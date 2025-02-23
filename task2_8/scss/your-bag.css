@@ -193,3 +193,12 @@
         }
     }
 }
+
+@media (min-width: 768px) {
+
+    .your-bag-container {
+        right: 0%;
+        width: 439px !important;
+    }
+
+}

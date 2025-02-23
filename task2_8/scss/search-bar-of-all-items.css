@@ -132,3 +132,11 @@
 .fa-search {
     transform: translateY(17px);
 }
+
+@media (min-width: 768px) {
+
+    .search-container {
+        margin-bottom: 46px;
+    }
+
+}
