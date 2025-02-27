@@ -145,10 +145,10 @@
             </div>
             <div class="topic-header">Topic</div>
             <div class="all-items-container">
-                <div class="item">Red Wine</div>
-                <div class="item">White Wine</div>
-                <div class="item">Rosé Wine</div>
-                <div class="item">All</div>
+                <div id="red-wine-item" class="item">Red Wine</div>
+                <div id="white-wine-item" class="item">White Wine</div>
+                <div id="rose-wine-item" class="item">Rosé Wine</div>
+                <div id="all-wines-item" class="item selected-item">All</div>
             </div>
             <div class="topic-header">Prise</div>
             <div class="container">
@@ -221,9 +221,9 @@
             </div>-->
         </div>
         <div class="pagination-wrapper">
-            <button class="paginate left"><i></i><i></i></button>
-            <div class="counter">1 / 5</div>
-            <button class="paginate right"><i></i><i></i></button>
+            <button id="previous-page" class="paginate left"><i></i><i></i></button>
+            <div id="page-counter" class="counter">1 / 5</div>
+            <button id="next-page" class="paginate right"><i></i><i></i></button>
         </div>
     </main>
     <footer class="footer-container">
@@ -276,9 +276,10 @@
     <script type="module" src="./js/search-bar.js"></script>
     <script type="module" src="./js/price-input-range-of-all-items.js"></script>
     <script type="module" src="./js/your-bag.js"></script>
-    <script type="module" src="./js/main-menu-manager-of-all-items.js"></script>
-    <script type="module" src="./js/index-of-all-items.js"></script>
     <script type="module" src="./js/pagination.js"></script>
+    <!--<script type="module" src="./js/main-menu-manager-of-all-items.js"></script>
+    <script type="module" src="./js/pagination-interface-manager.js"></script>-->
+    <script type="module" src="./js/index-of-all-items.js"></script>
 </body>
 
 </html>

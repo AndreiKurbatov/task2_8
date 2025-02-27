@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+/*document.addEventListener("DOMContentLoaded", () => {
     const prevButton = document.querySelector(".paginate.left") as HTMLButtonElement;
     const nextButton = document.querySelector(".paginate.right") as HTMLButtonElement;
     const counter = document.querySelector(".counter") as HTMLElement;
@@ -21,4 +21,4 @@ document.addEventListener("DOMContentLoaded", () => {
     if (nextButton) nextButton.addEventListener("click", () => updatePagination(1));
 
     updatePagination(0);
-});
+});*/

@@ -10,6 +10,8 @@ import { Wine } from "./wine.js";
 import { getWineByName, getWineByType, importData, getWineByPrice } from "./data-importer.js"
 import { WineType } from "./wine-type.js";
 import { LocalStorageUtils } from "./local-storage-manager.js";
+import { doPagination } from "./pagination-interface-manager.js"
+
 
 menuOptionsButton.addEventListener("click", () => {
     const totalHeight = document.documentElement.scrollHeight;
@@ -32,16 +34,18 @@ closeHeadMenuItem.addEventListener("click", () => {
     headMenuLineContainer.style.transform = '';
 })
 
-export function generateWineItems(wines: Wine[]): void {
-    const container = document.getElementById("items-list-container");
-    if (!container) return;
+export function generateWineItems(wines: Wine[] | null): void {
+    if (wines) {
+        const container = document.getElementById("items-list-container");
+        if (!container) return;
+        container.innerHTML = '';
 
-    wines.forEach(wine => {
-        const itemContainer = document.createElement("div");
-        itemContainer.classList.add("item-container");
-        itemContainer.id = `item-container-${wine.id}`;
+        wines.forEach(wine => {
+            const itemContainer = document.createElement("div");
+            itemContainer.classList.add("item-container");
+            itemContainer.id = `item-container-${wine.id}`;
 
-        itemContainer.innerHTML = `
+            itemContainer.innerHTML = `
             <img src="./images/pexels-brettjordan-917831.jpg" class="photo" />
             <div class="add-button" data-id="${wine.id}">+</div>
             <div class="photo-description-container">
@@ -76,10 +80,13 @@ export function generateWineItems(wines: Wine[]): void {
                 <div class="item-producer">${wine.country}</div>
             </div>
         `;
-        container.appendChild(itemContainer);
-    });
+            container.appendChild(itemContainer);
+        });
+    } else {
+        console.log("The page cannot be generated because the wines are null");
+    }
 }
-
+/*
 export function addSearchHandling(): void {
     const searchInput = document.getElementById("search") as HTMLInputElement;
     const goIcon = document.getElementById("go-icon");
@@ -88,9 +95,9 @@ export function addSearchHandling(): void {
         const searchText = searchInput.value.trim();
         if (searchText) {
             try {
-            const filteredWines = await getWineByName(searchText);
-            removeAllWineItemsFromList();
-            generateWineItems(filteredWines);
+                const filteredWines = await getWineByName(searchText);
+                removeAllWineItemsFromList();
+                generateWineItems(filteredWines);
             } catch (error) {
                 console.error("Error populating interface with filtered wines", error);
             }
@@ -108,7 +115,7 @@ export function addSearchHandling(): void {
         goIcon.addEventListener("click", handleSearch);
     }
 }
-
+*//*
 export function addSearchByTypeHandling(): void {
     const categoryContainer = document.querySelector(".all-items-container");
     if (categoryContainer) {
@@ -140,8 +147,9 @@ export function addSearchByTypeHandling(): void {
         });
     }
 }
-
-export function addSearchingByPriceRange() : void {
+    */
+/*
+export function addSearchingByPriceRange(): void {
     const rangeSlider = document.getElementById("rs-range-line") as HTMLInputElement;
     const rangeBullet = document.getElementById("rs-bullet") as HTMLElement;
 
@@ -154,8 +162,9 @@ export function addSearchingByPriceRange() : void {
         });
     }
 }
+    */
 
-export function addWineBagStorageFunctionality() : void {
+export function addWineBagStorageFunctionality(): void {
     document.querySelectorAll(".add-button").forEach(button => {
         button.addEventListener("click", (event) => {
             const target = event.target as HTMLElement;
@@ -166,8 +175,128 @@ export function addWineBagStorageFunctionality() : void {
         });
     });
 }
-
+/*
 function removeAllWineItemsFromList(): void {
     const containers = document.querySelectorAll(".items-list-container .item-container");
     containers.forEach(container => container.remove());
+}*/
+
+export function addDynamicButtonsForSorting(): void {
+
+    //updatePageCounter();
+
+    addClickListener("red-wine-item");
+    addClickListener("white-wine-item");
+    addClickListener("rose-wine-item");
+    addClickListener("all-wines-item");
+
+    addEventListenerWithLogging("search", "keypress", (event) => {
+        if ((event as KeyboardEvent).key === "Enter") {
+            event.preventDefault();
+            document.querySelectorAll(".all-items-container .item").forEach(item => {
+                item.classList.remove("selected-item");
+            });
+
+            //updatePageCounter();
+            doPagination();
+        }
+    });
+
+    addEventListenerWithLogging("go-icon", "click", () => {
+        document.querySelectorAll(".all-items-container .item").forEach(item => {
+            item.classList.remove("selected-item");
+        });
+
+        //updatePageCounter();
+        doPagination();
+    });
+
+    addEventListenerWithLogging("rs-range-line", "input", () => {
+        //updatePageCounter();
+        doPagination();
+    });
+
+}
+
+function updateSelectedItem(selectedId: string): void {
+    document.querySelectorAll(".all-items-container .item").forEach(item => {
+        item.classList.remove("selected-item");
+    });
+
+    document.getElementById(selectedId)?.classList.add("selected-item");
+}
+/*
+function updatePageCounter(): void {
+    const currentPage = LocalStorageUtils.getCurrentPage();
+    const totalPages = LocalStorageUtils.getPagesTotal();
+
+    const pageCounterElement = document.getElementById("page-counter");
+    if (pageCounterElement) {
+        pageCounterElement.textContent = `${currentPage} / ${totalPages}`;
+    }
+}*/
+
+function addClickListener(elementId: string) {
+    const element = document.getElementById(elementId);
+    if (element) {
+        element.addEventListener("click", () => {
+            updateSelectedItem(elementId);
+            //updatePageCounter();
+            doPagination();
+        });
+    } else {
+        console.error(`Element with ID '${elementId}' not found in the DOM!`);
+    }
+}
+
+function addEventListenerWithLogging(elementId: string, eventType: string, callback: (event: Event) => void) {
+    const element = document.getElementById(elementId);
+    if (element) {
+        element.addEventListener(eventType, callback);
+    } else {
+        console.error(`Element with ID '${elementId}' not found in the DOM!`);
+    }
+}
+
+export function setInitialInterface(): void {
+    const searchType: number = LocalStorageUtils.getSearchType();
+    const sortingParams = LocalStorageUtils.getSortingParameters();
+
+    switch (searchType) {
+        case 0:
+            document.getElementById("all-wines-item")?.classList.add("selected-item");
+            break;
+        case 1:
+            const name = String(sortingParams["name"] || "");
+
+            document.querySelectorAll(".all-items-container .item").forEach(item => {
+                item.classList.remove("selected-item");
+            });
+
+            const searchInput = document.getElementById("search") as HTMLInputElement;
+            if (searchInput) {
+                searchInput.value = name;
+            }
+            break;
+        case 2:
+            document.querySelectorAll(".all-items-container .item").forEach(item => {
+                item.classList.remove("selected-item");
+            });
+
+            const type = Number(sortingParams["type"]);
+
+            switch(type) {
+                case 0:
+                    document.getElementById("red-wine-item")?.classList.add("selected-item");
+                    break;
+                case 1:
+                    document.getElementById("white-wine-item")?.classList.add("selected-item");
+                    break;
+                case 2:
+                    document.getElementById("rose-wine-item")?.classList.add("selected-item");
+                    break;
+            }
+            break;
+        default:
+    }
 }

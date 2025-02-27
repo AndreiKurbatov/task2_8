@@ -1,7 +1,6 @@
 import { menuOptionsButton, headMenuContainer, rightMenuButton, headMenuItemsContainer, headMenuLineContainer, closeHeadMenuItem, } from './menu-elements.js';
-import { getWineByName, getWineByType, importData, getWineByPrice } from "./data-importer.js";
-import { WineType } from "./wine-type.js";
 import { LocalStorageUtils } from "./local-storage-manager.js";
+import { doPagination } from "./pagination-interface-manager.js";
 menuOptionsButton.addEventListener("click", () => {
     const totalHeight = document.documentElement.scrollHeight;
     headMenuContainer.style.height = String(totalHeight) + 'px';
@@ -22,14 +21,16 @@ closeHeadMenuItem.addEventListener("click", () => {
     headMenuLineContainer.style.transform = '';
 });
 export function generateWineItems(wines) {
-    const container = document.getElementById("items-list-container");
-    if (!container)
-        return;
-    wines.forEach(wine => {
-        const itemContainer = document.createElement("div");
-        itemContainer.classList.add("item-container");
-        itemContainer.id = `item-container-${wine.id}`;
-        itemContainer.innerHTML = `
+    if (wines) {
+        const container = document.getElementById("items-list-container");
+        if (!container)
+            return;
+        container.innerHTML = '';
+        wines.forEach(wine => {
+            const itemContainer = document.createElement("div");
+            itemContainer.classList.add("item-container");
+            itemContainer.id = `item-container-${wine.id}`;
+            itemContainer.innerHTML = `
             <img src="./images/pexels-brettjordan-917831.jpg" class="photo" />
             <div class="add-button" data-id="${wine.id}">+</div>
             <div class="photo-description-container">
@@ -64,12 +65,18 @@ export function generateWineItems(wines) {
                 <div class="item-producer">${wine.country}</div>
             </div>
         `;
-        container.appendChild(itemContainer);
-    });
+            container.appendChild(itemContainer);
+        });
+    }
+    else {
+        console.log("The page cannot be generated because the wines are null");
+    }
 }
-export function addSearchHandling() {
-    const searchInput = document.getElementById("search");
+/*
+export function addSearchHandling(): void {
+    const searchInput = document.getElementById("search") as HTMLInputElement;
     const goIcon = document.getElementById("go-icon");
+
     async function handleSearch() {
         const searchText = searchInput.value.trim();
         if (searchText) {
@@ -77,30 +84,32 @@ export function addSearchHandling() {
                 const filteredWines = await getWineByName(searchText);
                 removeAllWineItemsFromList();
                 generateWineItems(filteredWines);
-            }
-            catch (error) {
+            } catch (error) {
                 console.error("Error populating interface with filtered wines", error);
             }
         }
     }
+
     searchInput.addEventListener("keypress", (event) => {
         if (event.key === "Enter") {
             event.preventDefault();
             handleSearch();
         }
     });
+
     if (goIcon) {
         goIcon.addEventListener("click", handleSearch);
     }
 }
-export function addSearchByTypeHandling() {
+*/ /*
+export function addSearchByTypeHandling(): void {
     const categoryContainer = document.querySelector(".all-items-container");
     if (categoryContainer) {
         categoryContainer.addEventListener("click", async (event) => {
-            const target = event.target;
-            if (!target.classList.contains("item"))
-                return;
-            let type = null;
+            const target = event.target as HTMLElement;
+            if (!target.classList.contains("item")) return;
+
+            let type: number | null = null;
             switch (target.innerText.trim()) {
                 case "Red Wine":
                     type = WineType.RED_WINE;
@@ -124,9 +133,12 @@ export function addSearchByTypeHandling() {
         });
     }
 }
-export function addSearchingByPriceRange() {
-    const rangeSlider = document.getElementById("rs-range-line");
-    const rangeBullet = document.getElementById("rs-bullet");
+    */
+/*
+export function addSearchingByPriceRange(): void {
+    const rangeSlider = document.getElementById("rs-range-line") as HTMLInputElement;
+    const rangeBullet = document.getElementById("rs-bullet") as HTMLElement;
+
     if (rangeSlider && rangeBullet) {
         rangeSlider.addEventListener("input", async () => {
             const price = parseFloat(rangeSlider.value);
@@ -136,6 +148,7 @@ export function addSearchingByPriceRange() {
         });
     }
 }
+    */
 export function addWineBagStorageFunctionality() {
     document.querySelectorAll(".add-button").forEach(button => {
         button.addEventListener("click", (event) => {
@@ -147,7 +160,113 @@ export function addWineBagStorageFunctionality() {
         });
     });
 }
-function removeAllWineItemsFromList() {
+/*
+function removeAllWineItemsFromList(): void {
     const containers = document.querySelectorAll(".items-list-container .item-container");
     containers.forEach(container => container.remove());
+}*/
+export function addDynamicButtonsForSorting() {
+    //updatePageCounter();
+    addClickListener("red-wine-item");
+    addClickListener("white-wine-item");
+    addClickListener("rose-wine-item");
+    addClickListener("all-wines-item");
+    addEventListenerWithLogging("search", "keypress", (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.querySelectorAll(".all-items-container .item").forEach(item => {
+                item.classList.remove("selected-item");
+            });
+            //updatePageCounter();
+            doPagination();
+        }
+    });
+    addEventListenerWithLogging("go-icon", "click", () => {
+        document.querySelectorAll(".all-items-container .item").forEach(item => {
+            item.classList.remove("selected-item");
+        });
+        //updatePageCounter();
+        doPagination();
+    });
+    addEventListenerWithLogging("rs-range-line", "input", () => {
+        //updatePageCounter();
+        doPagination();
+    });
+}
+function updateSelectedItem(selectedId) {
+    var _a;
+    document.querySelectorAll(".all-items-container .item").forEach(item => {
+        item.classList.remove("selected-item");
+    });
+    (_a = document.getElementById(selectedId)) === null || _a === void 0 ? void 0 : _a.classList.add("selected-item");
+}
+/*
+function updatePageCounter(): void {
+    const currentPage = LocalStorageUtils.getCurrentPage();
+    const totalPages = LocalStorageUtils.getPagesTotal();
+
+    const pageCounterElement = document.getElementById("page-counter");
+    if (pageCounterElement) {
+        pageCounterElement.textContent = `${currentPage} / ${totalPages}`;
+    }
+}*/
+function addClickListener(elementId) {
+    const element = document.getElementById(elementId);
+    if (element) {
+        element.addEventListener("click", () => {
+            updateSelectedItem(elementId);
+            //updatePageCounter();
+            doPagination();
+        });
+    }
+    else {
+        console.error(`Element with ID '${elementId}' not found in the DOM!`);
+    }
+}
+function addEventListenerWithLogging(elementId, eventType, callback) {
+    const element = document.getElementById(elementId);
+    if (element) {
+        element.addEventListener(eventType, callback);
+    }
+    else {
+        console.error(`Element with ID '${elementId}' not found in the DOM!`);
+    }
+}
+export function setInitialInterface() {
+    var _a, _b, _c, _d;
+    const searchType = LocalStorageUtils.getSearchType();
+    const sortingParams = LocalStorageUtils.getSortingParameters();
+    switch (searchType) {
+        case 0:
+            (_a = document.getElementById("all-wines-item")) === null || _a === void 0 ? void 0 : _a.classList.add("selected-item");
+            break;
+        case 1:
+            const name = String(sortingParams["name"] || "");
+            document.querySelectorAll(".all-items-container .item").forEach(item => {
+                item.classList.remove("selected-item");
+            });
+            const searchInput = document.getElementById("search");
+            if (searchInput) {
+                searchInput.value = name;
+            }
+            break;
+        case 2:
+            document.querySelectorAll(".all-items-container .item").forEach(item => {
+                item.classList.remove("selected-item");
+            });
+            const type = Number(sortingParams["type"]);
+            switch (type) {
+                case 0:
+                    (_b = document.getElementById("red-wine-item")) === null || _b === void 0 ? void 0 : _b.classList.add("selected-item");
+                    break;
+                case 1:
+                    (_c = document.getElementById("white-wine-item")) === null || _c === void 0 ? void 0 : _c.classList.add("selected-item");
+                    break;
+                case 2:
+                    (_d = document.getElementById("rose-wine-item")) === null || _d === void 0 ? void 0 : _d.classList.add("selected-item");
+                    break;
+            }
+            break;
+        default:
+    }
 }

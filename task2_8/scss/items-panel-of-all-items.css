@@ -45,6 +45,11 @@
                 color: white;
             }
         }
+
+        .selected-item {
+            background-color: brown;
+            color: white;
+        }
     }
 }
 
