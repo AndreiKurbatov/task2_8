@@ -53,19 +53,23 @@
     const captureBtn = document.getElementById('captureBtn');
 
     openCameraBtn.addEventListener('click', async () => {
-      // Nascondi il pulsante di apertura e mostra il container del video
-      openCameraBtn.style.display = 'none';
-      videoContainer.style.display = 'flex';
+  // Nascondi il pulsante di apertura e mostra il container del video
+  openCameraBtn.style.display = 'none';
+  videoContainer.style.display = 'flex';
 
-      try {
-        // Richiede l'accesso alla fotocamera (solo video)
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
-        video.srcObject = stream;
-      } catch (err) {
-        console.error("Errore nell'apertura della fotocamera:", err);
-        alert("Impossibile aprire la fotocamera.");
-      }
+  try {
+    // Richiede l'accesso alla fotocamera posteriore
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: "environment" },
+      audio: false
     });
+    video.srcObject = stream;
+  } catch (err) {
+    console.error("Errore nell'apertura della fotocamera:", err);
+    alert("Impossibile aprire la fotocamera.");
+  }
+});
+
 
     captureBtn.addEventListener('click', () => {
       // Crea un canvas per catturare l'immagine dal video
