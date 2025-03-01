@@ -213,6 +213,9 @@
             font-size: 30px;
 
             .item {
+                text-decoration: none;
+                color: inherit;
+                display: block;
                 line-height: 2.0;
                 cursor: pointer;
             }
@@ -310,6 +313,9 @@
                         gap: 50px;
 
                         .item {
+                            text-decoration: none;
+                            color: inherit;
+                            display: block;
                             line-height: 2.0;
                             cursor: pointer;
                             font-size: 15px;
