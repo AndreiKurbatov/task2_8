@@ -1,178 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="it">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Camera App</title>
   <style>
-    body {
-      background: #33ab83;
+    /* Stili per far occupare tutto lo schermo */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
-
-    button {
-      appearance: none;
-      background: transparent;
-      border: 0;
-      outline: 0;
-    }
-
-    .paginate {
+    #videoContainer {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       position: relative;
-      margin: 10px;
-      width: 50px;
-      height: 50px;
-      cursor: pointer;
-      transform: translate3d(0, 0, 0);
-      /* Fix flickering in WebKit */
-
+    }
+    video {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    /* Pulsante per scattare la foto, posizionato in basso */
+    #captureBtn {
       position: absolute;
-      top: 50%;
-      margin-top: -20px;
-      filter: drop-shadow(0 2px 0px rgba(0, 0, 0, 0.2));
-    }
-
-    .paginate i {
-      position: absolute;
-      top: 40%;
-      left: 0;
-      width: 50px;
-      height: 5px;
-      border-radius: 2.5px;
-      background: #fff;
-      transition: all 0.15s ease;
-    }
-
-    .paginate.left {
-      right: 58%;
-    }
-
-    .paginate.left i {
-      transform-origin: 0% 50%;
-    }
-
-    .paginate.left i:first-child {
-      transform: rotate(40deg);
-    }
-
-    .paginate.left i:last-child {
-      transform: rotate(-40deg);
-    }
-
-    .paginate.left:hover i:first-child {
-      transform: rotate(30deg);
-    }
-
-    .paginate.left:hover i:last-child {
-      transform: rotate(-30deg);
-    }
-
-    .paginate.left:active i:first-child {
-      transform: translateX(1px) rotate(25deg);
-    }
-
-    .paginate.left:active i:last-child {
-      transform: translateX(1px) rotate(-25deg);
-    }
-
-    .paginate.left[data-state="disabled"] i:first-child,
-    .paginate.left[data-state="disabled"] i:last-child {
-      transform: translateX(-5px) rotate(0deg);
-    }
-
-    .paginate.left[data-state="disabled"]:hover i:first-child,
-    .paginate.left[data-state="disabled"]:hover i:last-child {
-      transform: translateX(-5px) rotate(0deg);
-    }
-
-    .paginate.right {
-      left: 58%;
-    }
-
-    .paginate.right i {
-      transform-origin: 100% 50%;
-    }
-
-    .paginate.right i:first-child {
-      transform: rotate(40deg);
-    }
-
-    .paginate.right i:last-child {
-      transform: rotate(-40deg);
-    }
-
-    .paginate.right:hover i:first-child {
-      transform: rotate(30deg);
-    }
-
-    .paginate.right:hover i:last-child {
-      transform: rotate(-30deg);
-    }
-
-    .paginate.right:active i:first-child {
-      transform: translateX(1px) rotate(25deg);
-    }
-
-    .paginate.right:active i:last-child {
-      transform: translateX(1px) rotate(-25deg);
-    }
-
-    .paginate.right[data-state="disabled"] i:first-child,
-    .paginate.right[data-state="disabled"] i:last-child {
-      transform: translateX(5px) rotate(0deg);
-    }
-
-    .paginate.right[data-state="disabled"]:hover i:first-child,
-    .paginate.right[data-state="disabled"]:hover i:last-child {
-      transform: translateX(5px) rotate(0deg);
-    }
-
-    .paginate[data-state="disabled"] {
-      opacity: 0.3;
-      cursor: default;
-    }
-
-    .counter {
-      text-align: center;
-      position: absolute;
-      width: 100%;
-      top: 50%;
-      margin-top: -15px;
-      font-size: 30px;
-      font-family: Helvetica, sans-serif;
-      text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.2);
+      bottom: 20px;
+      background: rgba(0,0,0,0.5);
       color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
   </style>
 </head>
-
 <body>
-  <div class="counter"></div>
+  <!-- Pulsante iniziale per aprire la fotocamera -->
+  <button id="openCameraBtn">Apri Fotocamera</button>
 
-  <button class="paginate left"><i></i><i></i></button>
-  <button class="paginate right"><i></i><i></i></button>
+  <!-- Container per il video e il pulsante di cattura -->
+  <div id="videoContainer" style="display:none;">
+    <video id="video" autoplay></video>
+    <button id="captureBtn">Scatta Foto</button>
+  </div>
 
   <script>
-    var pr = document.querySelector('.paginate.left');
-    var pl = document.querySelector('.paginate.right');
+    const openCameraBtn = document.getElementById('openCameraBtn');
+    const videoContainer = document.getElementById('videoContainer');
+    const video = document.getElementById('video');
+    const captureBtn = document.getElementById('captureBtn');
 
-    pr.onclick = slide.bind(this, -1);
-    pl.onclick = slide.bind(this, 1);
+    openCameraBtn.addEventListener('click', async () => {
+      // Nascondi il pulsante di apertura e mostra il container del video
+      openCameraBtn.style.display = 'none';
+      videoContainer.style.display = 'flex';
 
-    var index = 0,
-      total = 5;
+      try {
+        // Richiede l'accesso alla fotocamera (solo video)
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+        video.srcObject = stream;
+      } catch (err) {
+        console.error("Errore nell'apertura della fotocamera:", err);
+        alert("Impossibile aprire la fotocamera.");
+      }
+    });
 
-    function slide(offset) {
-      index = Math.min(Math.max(index + offset, 0), total - 1);
+    captureBtn.addEventListener('click', () => {
+      // Crea un canvas per catturare l'immagine dal video
+      const canvas = document.createElement('canvas');
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      const context = canvas.getContext('2d');
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-      document.querySelector('.counter').innerHTML = (index + 1) + ' / ' + total;
+      // Converte il canvas in un'immagine in formato base64
+      const imageData = canvas.toDataURL('image/png');
+      console.log('Immagine catturata:', imageData);
 
-      pr.setAttribute('data-state', index === 0 ? 'disabled' : '');
-      pl.setAttribute('data-state', index === total - 1 ? 'disabled' : '');
-    }
-
-    slide(0);
+      // Puoi aprire l'immagine in una nuova finestra o salvarla/inviarla al server
+      window.open(imageData);
+    });
   </script>
 </body>
-
 </html>
