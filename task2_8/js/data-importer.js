@@ -1,10 +1,12 @@
+import { wineData } from "./wine-data.js";
 export async function importData() {
     try {
-        const response = await fetch("../public/test-data/Wine_Test_Data.json");
+        const response = wineData; /*
         if (!response.ok) {
             throw new Error(`Error HTTP: ${response.status}`);
         }
-        return await response.json();
+        return await response.json();*/
+        return response;
     }
     catch (error) {
         console.error("Error getting file with test data for wines:", error);
