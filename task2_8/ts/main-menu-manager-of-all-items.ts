@@ -46,6 +46,10 @@ export function generateWineItems(wines: Wine[] | null): void {
             itemContainer.id = `item-container-${wine.id}`;
 
             itemContainer.innerHTML = `
+            <div class="photo-container-desktop">
+                <img src="./images/pexels-brettjordan-917831.jpg" class="photo" />
+                <div class="add-button" data-id="${wine.id}">+</div>
+            </div>
             <img src="./images/pexels-brettjordan-917831.jpg" class="photo" />
             <div class="add-button" data-id="${wine.id}">+</div>
             <div class="photo-description-container">

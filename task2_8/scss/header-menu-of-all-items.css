@@ -235,6 +235,17 @@
 
         .header-container {
 
+            .header-items-container {
+
+                .small-header {
+                    margin-top: 105px;
+                }
+
+                .big-header {
+                    margin-bottom: 14px;
+                }
+            }
+
             .head-menu-container {
                 flex-direction: row;
                 justify-content: space-between;

@@ -19,6 +19,10 @@
             align-items: center;
             position: relative;
 
+            .photo-container-desktop {
+                display: none;
+            }
+
             .photo {
                 width: 100%;
                 height: 100%;
@@ -29,8 +33,8 @@
 
             .add-button {
                 position: absolute;
-                top: 8%;
-                left: 85%;
+                top: 6%;
+                left: 83%;
                 height: 50px;
                 width: 50px;
                 background-color: brown;
@@ -54,14 +58,15 @@
 
                 &:hover {
                     background-color: antiquewhite;
-                    color:brown;
+                    color: brown;
 
                     &:after {
                         color: brown;
                     }
                 }
 
-                transition: color 0.3s ease, background-color 0.3s ease;
+                transition: color 0.3s ease,
+                background-color 0.3s ease;
             }
 
             .photo-description-container {
@@ -144,6 +149,61 @@
             grid-template-columns: 1fr;
             justify-self: start;
             margin-top: 33px;
+
+            .item-container {
+
+                .photo-container {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+
+                    .photo {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        overflow: hidden;
+                        border-radius: 15px;
+                    }
+
+                    .add-button {
+                        position: absolute;
+                        top: 6%;
+                        left: 83%;
+                        height: 50px;
+                        width: 50px;
+                        background-color: brown;
+                        color: white;
+                        text-align: center;
+                        font-size: 30px;
+                        font-weight: 500;
+                        cursor: pointer;
+
+                        &:after {
+                            content: "add";
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            font-size: 14px;
+                            color: white;
+                            margin-top: 4px;
+                            transition: color 0.3s ease, background-color 0.3s ease;
+                        }
+
+                        &:hover {
+                            background-color: antiquewhite;
+                            color: brown;
+
+                            &:after {
+                                color: brown;
+                            }
+                        }
+
+                        transition: color 0.3s ease,
+                        background-color 0.3s ease;
+                    }
+                }
+            }
         }
 
         .more-items-button {
@@ -153,6 +213,13 @@
             width: 85%;
             justify-self: center;
         }
+
+        .pagination-wrapper {
+            .counter {
+                font-family: "Poppins", serif;
+                font-weight: 600;
+            }
+        }
     }
 }
 
@@ -161,6 +228,61 @@
 
         .items-list-container {
             grid-template-columns: 1fr 1fr;
+
+            .item-container {
+
+                .photo-container {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+
+                    .photo {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        overflow: hidden;
+                        border-radius: 15px;
+                    }
+
+                    .add-button {
+                        position: absolute;
+                        top: 6%;
+                        left: 83%;
+                        height: 50px;
+                        width: 50px;
+                        background-color: brown;
+                        color: white;
+                        text-align: center;
+                        font-size: 30px;
+                        font-weight: 500;
+                        cursor: pointer;
+
+                        &:after {
+                            content: "add";
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            font-size: 14px;
+                            color: white;
+                            margin-top: 4px;
+                            transition: color 0.3s ease, background-color 0.3s ease;
+                        }
+
+                        &:hover {
+                            background-color: antiquewhite;
+                            color: brown;
+
+                            &:after {
+                                color: brown;
+                            }
+                        }
+
+                        transition: color 0.3s ease,
+                        background-color 0.3s ease;
+                    }
+                }
+            }
         }
     }
 }
@@ -168,9 +290,65 @@
 @media (min-width: 1189px) {
     .main-container {
         max-width: none;
+        margin: 20px auto;
 
         .items-list-container {
             grid-template-columns: 1fr 1fr 1fr;
+
+            .item-container {
+
+                .photo-container {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+
+                    .photo {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        overflow: hidden;
+                        border-radius: 15px;
+                    }
+
+                    .add-button {
+                        position: absolute;
+                        top: 6%;
+                        left: 83%;
+                        height: 50px;
+                        width: 50px;
+                        background-color: brown;
+                        color: white;
+                        text-align: center;
+                        font-size: 30px;
+                        font-weight: 500;
+                        cursor: pointer;
+
+                        &:after {
+                            content: "add";
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            font-size: 14px;
+                            color: white;
+                            margin-top: 4px;
+                            transition: color 0.3s ease, background-color 0.3s ease;
+                        }
+
+                        &:hover {
+                            background-color: antiquewhite;
+                            color: brown;
+
+                            &:after {
+                                color: brown;
+                            }
+                        }
+
+                        transition: color 0.3s ease,
+                        background-color 0.3s ease;
+                    }
+                }
+            }
         }
     }
 }
