@@ -2,17 +2,20 @@ import { getWineByName, getWineByPrice, getWineByPriceAndType, getWineByType, im
 import { PaginationManager } from "./pagination-manager.js";
 import { generateWineItems, setInitialInterface } from "./main-menu-manager-of-all-items.js";
 import { LocalStorageUtils } from "./local-storage-manager.js";
+import { addWineBagStorageFunctionality } from "./main-menu-manager-of-all-items.js"
 
 export async function addPaginationForButtons() {
 
     setInitialInterface();
     await doPagination();
+    addWineBagStorageFunctionality();
 
     const nextPage = document.getElementById("next-page") as HTMLElement;
     if (nextPage) {
         nextPage.addEventListener("click", async () => {
             updatePagination(+1);
             await doPagination()
+            addWineBagStorageFunctionality();
         });
     } else {
         console.log("The next-page element was not found");
@@ -23,6 +26,7 @@ export async function addPaginationForButtons() {
         previousPage.addEventListener("click", async () => {
             updatePagination(-1);
             await doPagination();
+            addWineBagStorageFunctionality();
         });
     } else {
         console.log("The previous-page element was not found");

@@ -12,7 +12,7 @@ export function addSorting() {
         } else {
             LocalStorageUtils.setSearchType(2);
         }
-        sortingParams = hasPrice ? {price : sortingParams["price"]} : {}
+        sortingParams = hasPrice ? { price: sortingParams["price"] } : {}
         sortingParams["type"] = WineType.RED_WINE;
         LocalStorageUtils.setSortingParameters(sortingParams);
     });
@@ -26,7 +26,7 @@ export function addSorting() {
         } else {
             LocalStorageUtils.setSearchType(2);
         }
-        sortingParams = hasPrice ? {price : sortingParams["price"]} : {}
+        sortingParams = hasPrice ? { price: sortingParams["price"] } : {}
         sortingParams["type"] = WineType.WHITE_WINE;
         LocalStorageUtils.setSortingParameters(sortingParams);
     });
@@ -40,7 +40,7 @@ export function addSorting() {
         } else {
             LocalStorageUtils.setSearchType(2);
         }
-        sortingParams = hasPrice ? {price : sortingParams["price"]} : {}
+        sortingParams = hasPrice ? { price: sortingParams["price"] } : {}
         sortingParams["type"] = WineType.ROSE_WINE;
         LocalStorageUtils.setSortingParameters(sortingParams);
     });
@@ -58,7 +58,7 @@ export function addSorting() {
         let sortingParams = LocalStorageUtils.getSortingParameters();
         const hasType = "type" in sortingParams;
         LocalStorageUtils.setSearchType(hasType ? 4 : 3);
-        sortingParams = hasType ? {type : sortingParams["type"]} : {};
+        sortingParams = hasType ? { type: sortingParams["type"] } : {};
         sortingParams["price"] = selectedPrice;
         LocalStorageUtils.setSortingParameters(sortingParams);
     })

@@ -5,7 +5,6 @@
     margin: 0px;
     padding: 0px;
     overflow-x: hidden;
-    /* to delete*/
 
     .header-container {
         display: flex;
@@ -197,7 +196,6 @@
                 font-weight: 700;
                 color: black;
                 font-family: "Playfair Display", serif;
-                /*margin-bottom: 18px;*/
                 transform: translateY(-19px);
             }
         }
@@ -220,7 +218,7 @@
             }
 
             .item:nth-child(1) {
-                color:rgb(197, 8, 8);
+                color: rgb(197, 8, 8);
             }
         }
     }
@@ -249,7 +247,7 @@
             .head-menu-container {
                 flex-direction: row;
                 justify-content: space-between;
-                align-items:start;
+                align-items: start;
                 height: 70px;
                 background-color: white;
                 transition: height 0.5s ease, background-color 0.3s ease;
@@ -265,7 +263,7 @@
                     width: 100%;
                     padding: 0 20px;
                     box-sizing: border-box;
-                    transform:translateY(13px);
+                    transform: translateY(13px);
 
                     .header-wrapper {
                         flex: 1;
@@ -430,7 +428,7 @@
         .header-container {
             .head-menu-container {
                 .head-menu-line-container-desktop {
-                    transform:translateY(4px);
+                    transform: translateY(4px);
                 }
             }
         }

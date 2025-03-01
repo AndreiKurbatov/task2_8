@@ -1,4 +1,4 @@
-import {Wine} from "./wine.js";
+import { Wine } from "./wine.js";
 
 export async function importData(): Promise<Wine[]> {
     try {
@@ -13,7 +13,7 @@ export async function importData(): Promise<Wine[]> {
     }
 }
 
-export async function getWineById(id: number) : Promise<Wine | null> {
+export async function getWineById(id: number): Promise<Wine | null> {
     try {
         const wines = await importData();
         return wines.find(wine => wine.id === id) || null;
@@ -23,7 +23,7 @@ export async function getWineById(id: number) : Promise<Wine | null> {
     }
 }
 
-export async function getWineByName(name: string) : Promise<Wine[]> {
+export async function getWineByName(name: string): Promise<Wine[]> {
     try {
         const wines = await importData();
         return wines.filter(wine => wine.name.toLowerCase() === name.toLowerCase());
@@ -33,7 +33,7 @@ export async function getWineByName(name: string) : Promise<Wine[]> {
     }
 }
 
-export async function getWineByType(type: number) : Promise<Wine[]> {
+export async function getWineByType(type: number): Promise<Wine[]> {
     try {
         const wines = await importData();
         return wines.filter(wine => wine.type === type);
@@ -43,7 +43,7 @@ export async function getWineByType(type: number) : Promise<Wine[]> {
     }
 }
 
-export async function getWineByPrice(price: number) : Promise<Wine[]> {
+export async function getWineByPrice(price: number): Promise<Wine[]> {
     try {
         const wines = await importData();
         return wines.filter(wine => wine.price <= price);
@@ -53,7 +53,7 @@ export async function getWineByPrice(price: number) : Promise<Wine[]> {
     }
 }
 
-export async function getWineByPriceAndType(type: number, price: number) : Promise<Wine[]> {
+export async function getWineByPriceAndType(type: number, price: number): Promise<Wine[]> {
     try {
         const wines = await importData();
         return wines.filter(wine => wine.price <= price && wine.type === type);

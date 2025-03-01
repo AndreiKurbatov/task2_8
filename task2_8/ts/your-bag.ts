@@ -126,7 +126,7 @@ function addMyBagFunctionality(): void {
     });
 }
 
-function calculateTotalSum() : void {
+function calculateTotalSum(): void {
     const bagQuantities: Record<number, number> = LocalStorageUtils.getUserBagQuantities();
     const bagContent: number[] = Object.keys(bagQuantities).map(id => parseInt(id));
 

@@ -4,7 +4,6 @@
     margin: 0px;
     padding: 0px;
     overflow-x: hidden !important;
-    /* to delete*/
 
     .header-container {
 
@@ -216,7 +215,7 @@
                     width: 100%;
                     padding: 0 20px;
                     box-sizing: border-box;
-                    transform:translateY(13px);
+                    transform: translateY(13px);
 
                     .header-wrapper {
                         flex: 1;
@@ -371,7 +370,7 @@
         .header-container {
             .head-menu-container {
                 .head-menu-line-container-desktop {
-                    transform:translateY(4px);
+                    transform: translateY(4px);
                 }
             }
         }

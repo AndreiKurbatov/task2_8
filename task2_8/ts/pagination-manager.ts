@@ -3,7 +3,7 @@ import { LocalStorageUtils } from "./local-storage-manager.js";
 
 export class PaginationManager {
     private static readonly ITEMS_PER_PAGE = 6;
-    private static totalPages : number;
+    private static totalPages: number;
 
     public static getPagesAmount(wines: Wine[] | null): number {
         if (wines) {
@@ -20,7 +20,7 @@ export class PaginationManager {
         return wines.slice(startIndex, endIndex);
     }
 
-    public static updateCurrentPageToNextPage() : boolean {
+    public static updateCurrentPageToNextPage(): boolean {
         let currentPage = LocalStorageUtils.getCurrentPage();
         const nextPage = currentPage + 1;
         if (nextPage <= this.totalPages) {
@@ -30,7 +30,7 @@ export class PaginationManager {
         return false;
     }
 
-    public static updateCurrentPageToPreviousPage() : boolean {
+    public static updateCurrentPageToPreviousPage(): boolean {
         let currentPage = LocalStorageUtils.getCurrentPage();
         const previousPage = currentPage - 1;
         if (previousPage >= 1) {

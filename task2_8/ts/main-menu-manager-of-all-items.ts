@@ -7,8 +7,6 @@ import {
     closeHeadMenuItem,
 } from './menu-elements.js';
 import { Wine } from "./wine.js";
-import { getWineByName, getWineByType, importData, getWineByPrice } from "./data-importer.js"
-import { WineType } from "./wine-type.js";
 import { LocalStorageUtils } from "./local-storage-manager.js";
 import { doPagination } from "./pagination-interface-manager.js"
 
@@ -90,83 +88,6 @@ export function generateWineItems(wines: Wine[] | null): void {
         console.log("The page cannot be generated because the wines are null");
     }
 }
-/*
-export function addSearchHandling(): void {
-    const searchInput = document.getElementById("search") as HTMLInputElement;
-    const goIcon = document.getElementById("go-icon");
-
-    async function handleSearch() {
-        const searchText = searchInput.value.trim();
-        if (searchText) {
-            try {
-                const filteredWines = await getWineByName(searchText);
-                removeAllWineItemsFromList();
-                generateWineItems(filteredWines);
-            } catch (error) {
-                console.error("Error populating interface with filtered wines", error);
-            }
-        }
-    }
-
-    searchInput.addEventListener("keypress", (event) => {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            handleSearch();
-        }
-    });
-
-    if (goIcon) {
-        goIcon.addEventListener("click", handleSearch);
-    }
-}
-*//*
-export function addSearchByTypeHandling(): void {
-    const categoryContainer = document.querySelector(".all-items-container");
-    if (categoryContainer) {
-        categoryContainer.addEventListener("click", async (event) => {
-            const target = event.target as HTMLElement;
-            if (!target.classList.contains("item")) return;
-
-            let type: number | null = null;
-            switch (target.innerText.trim()) {
-                case "Red Wine":
-                    type = WineType.RED_WINE;
-                    break;
-                case "White Wine":
-                    type = WineType.WHITE_WINE;
-                    break;
-                case "Rosé Wine":
-                    type = WineType.ROSE_WINE;
-                    break;
-                case "All":
-                    removeAllWineItemsFromList();
-                    importData().then(generateWineItems);
-                    return;
-            }
-            if (type !== null) {
-                const wines = await getWineByType(type);
-                removeAllWineItemsFromList();
-                generateWineItems(wines);
-            }
-        });
-    }
-}
-    */
-/*
-export function addSearchingByPriceRange(): void {
-    const rangeSlider = document.getElementById("rs-range-line") as HTMLInputElement;
-    const rangeBullet = document.getElementById("rs-bullet") as HTMLElement;
-
-    if (rangeSlider && rangeBullet) {
-        rangeSlider.addEventListener("input", async () => {
-            const price = parseFloat(rangeSlider.value);
-            const wines = await getWineByPrice(price);
-            removeAllWineItemsFromList();
-            generateWineItems(wines);
-        });
-    }
-}
-    */
 
 export function addWineBagStorageFunctionality(): void {
     document.querySelectorAll(".add-button").forEach(button => {
@@ -179,16 +100,8 @@ export function addWineBagStorageFunctionality(): void {
         });
     });
 }
-/*
-function removeAllWineItemsFromList(): void {
-    const containers = document.querySelectorAll(".items-list-container .item-container");
-    containers.forEach(container => container.remove());
-}*/
 
 export function addDynamicButtonsForSorting(): void {
-
-    //updatePageCounter();
-
     addClickListener("red-wine-item");
     addClickListener("white-wine-item");
     addClickListener("rose-wine-item");
@@ -201,7 +114,6 @@ export function addDynamicButtonsForSorting(): void {
                 item.classList.remove("selected-item");
             });
 
-            //updatePageCounter();
             doPagination();
         }
     });
@@ -211,12 +123,10 @@ export function addDynamicButtonsForSorting(): void {
             item.classList.remove("selected-item");
         });
 
-        //updatePageCounter();
         doPagination();
     });
 
     addEventListenerWithLogging("rs-range-line", "input", () => {
-        //updatePageCounter();
         doPagination();
     });
 
@@ -229,23 +139,12 @@ function updateSelectedItem(selectedId: string): void {
 
     document.getElementById(selectedId)?.classList.add("selected-item");
 }
-/*
-function updatePageCounter(): void {
-    const currentPage = LocalStorageUtils.getCurrentPage();
-    const totalPages = LocalStorageUtils.getPagesTotal();
-
-    const pageCounterElement = document.getElementById("page-counter");
-    if (pageCounterElement) {
-        pageCounterElement.textContent = `${currentPage} / ${totalPages}`;
-    }
-}*/
 
 function addClickListener(elementId: string) {
     const element = document.getElementById(elementId);
     if (element) {
         element.addEventListener("click", () => {
             updateSelectedItem(elementId);
-            //updatePageCounter();
             doPagination();
         });
     } else {
@@ -289,7 +188,7 @@ export function setInitialInterface(): void {
 
             const type = Number(sortingParams["type"]);
 
-            switch(type) {
+            switch (type) {
                 case 0:
                     document.getElementById("red-wine-item")?.classList.add("selected-item");
                     break;

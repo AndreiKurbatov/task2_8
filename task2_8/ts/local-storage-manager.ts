@@ -1,8 +1,8 @@
 export class LocalStorageUtils {
     private static userBagKey: string = "userBagContent";
     private static userBagQuantityKey: string = "userBagQuantity";
-    private static currentPage : string = "currentPage";
-    private static pagesTotal : string =  "pagesTotal";
+    private static currentPage: string = "currentPage";
+    private static pagesTotal: string = "pagesTotal";
     /*
     * "sortingParametersMap" : {
     *   "type" : "1",
@@ -10,7 +10,7 @@ export class LocalStorageUtils {
     *   "name" : "Barolo"
     * }
     */
-    private static sortingParameters : string = "sortingParametersMap";
+    private static sortingParameters: string = "sortingParametersMap";
     /*
     * "searchType" : "0" // all
     * "searchType" : "1" // search by name
@@ -18,7 +18,7 @@ export class LocalStorageUtils {
     * "searchType" : "3" // search by price
     * "searchType" : "4" // search by price and type
     */
-    private static searchType : string = "searchType";
+    private static searchType: string = "searchType";
 
     static initializeLocalStorage(): void {
         if (!localStorage.getItem(this.userBagKey)) {
