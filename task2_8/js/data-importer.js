@@ -1,6 +1,6 @@
 export async function importData() {
     try {
-        const response = await fetch("../test-data/Wine_Test_Data.json");
+        const response = await fetch("../public/test-data/Wine_Test_Data.json");
         if (!response.ok) {
             throw new Error(`Error HTTP: ${response.status}`);
         }
