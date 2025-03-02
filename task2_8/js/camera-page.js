@@ -31,7 +31,15 @@ settingsBtn.addEventListener('click', () => {
     cameraContainer.classList.add('hidden');
     startButton.classList.remove('hidden');
 });
+const captureCanvas = document.createElement('canvas');
+const captureContext = captureCanvas.getContext('2d');
 captureBtn.addEventListener('click', () => {
+    if (!captureContext)
+        return;
+    captureCanvas.width = cameraView.videoWidth;
+    captureCanvas.height = cameraView.videoHeight;
+    captureContext.drawImage(cameraView, 0, 0, captureCanvas.width, captureCanvas.height);
+    const photoDataUrl = captureCanvas.toDataURL('image/png');
     const flash = document.createElement('div');
     flash.style.position = 'fixed';
     flash.style.top = '0';
@@ -52,4 +60,28 @@ captureBtn.addEventListener('click', () => {
             document.body.removeChild(flash);
         }, 500);
     }, 100);
+    const imageBlob = base64ToBlob(photoDataUrl);
+    //saveBlobAsFile(imageBlob, "photo.jpg");
 });
+function base64ToBlob(base64) {
+    const byteCharacters = atob(base64.split(",")[1]);
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    return new Blob([byteArray], { type: "image/jpeg" });
+}
+/*
+function saveBlobAsFile(blob: Blob, filename: string) {
+    const link = document.createElement("a");
+    const url = URL.createObjectURL(blob);
+
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+}*/ 

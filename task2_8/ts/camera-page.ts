@@ -1,3 +1,6 @@
+import { storage } from "./firebase-config.js";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+
 const startButton = document.getElementById('startButton') as HTMLElement;
 const cameraContainer = document.getElementById('cameraContainer') as HTMLElement;
 const cameraView = document.getElementById('cameraView') as HTMLVideoElement;
@@ -33,7 +36,19 @@ settingsBtn.addEventListener('click', () => {
     startButton.classList.remove('hidden');
 });
 
+const captureCanvas = document.createElement('canvas');
+const captureContext = captureCanvas.getContext('2d');
+
 captureBtn.addEventListener('click', () => {
+    if (!captureContext) return;
+
+    captureCanvas.width = cameraView.videoWidth;
+    captureCanvas.height = cameraView.videoHeight;
+
+    captureContext.drawImage(cameraView, 0, 0, captureCanvas.width, captureCanvas.height);
+
+    const photoDataUrl = captureCanvas.toDataURL('image/png');
+
     const flash = document.createElement('div');
     flash.style.position = 'fixed';
     flash.style.top = '0';
@@ -56,4 +71,27 @@ captureBtn.addEventListener('click', () => {
             document.body.removeChild(flash);
         }, 500);
     }, 100);
+
+    const imageBlob = base64ToBlob(photoDataUrl);
+
+    uploadImage(imageBlob);
+
 });
+
+function base64ToBlob(base64: string): Blob {
+    const byteCharacters = atob(base64.split(",")[1]);
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    return new Blob([byteArray], { type: "image/jpeg" });
+}
+
+async function uploadImage(file: Blob) {
+    const storageRef = ref(storage, `images/${Date.now()}.jpg`);
+    await uploadBytes(storageRef, file);
+    const url = await getDownloadURL(storageRef);
+    console.log("Image URL:", url);
+    return url;
+}
