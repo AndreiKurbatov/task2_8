@@ -1,0 +1,9 @@
+export const menuOptionsButton = document.getElementById("menu-options-button");
+export const headMenuContainer = document.getElementById("head-menu-container");
+export const rightMenuButton = document.getElementById("right-menu-button");
+export const headMenuItemsContainer = document.getElementById("head-menu-items-container");
+export const headMenuLineContainer = document.getElementById("head-menu-line-container");
+export const closeHeadMenuItem = document.getElementById("close-head-menu-item");
+export const headerPhoto = document.querySelector(".parallax-photo-container .photo");
+export const parallaxHeader = document.querySelector(".parallax-photo-container .header");
+export const parallaxParagraph = document.querySelector(".parallax-photo-container .paragraph");
