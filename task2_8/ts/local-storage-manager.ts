@@ -45,8 +45,9 @@ export class LocalStorageUtils {
         if (!bag.includes(id)) {
             bag.push(id);
             localStorage.setItem(this.userBagKey, JSON.stringify(bag));
+        } else {
+            quantities[id] = (quantities[id] || 0) + 1;
         }
-        quantities[id] = (quantities[id] || 0) + 1;
 
         localStorage.setItem(this.userBagKey, JSON.stringify(bag));
         localStorage.setItem(this.userBagQuantityKey, JSON.stringify(quantities));

@@ -15,7 +15,7 @@ menuOptionsButton.addEventListener("click", () => {
     rightMenuButton.style.display = 'none';
     menuOptionsButton.style.display = 'none';
     headMenuLineContainer.style.justifyContent = 'center';
-    headMenuLineContainer.style.transform = 'translateX(-20px)';
+    headMenuLineContainer.style.transform = 'translate(-20px, -3px)';
 })
 
 closeHeadMenuItem.addEventListener("click", () => {

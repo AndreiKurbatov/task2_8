@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./scss/header-menu-of-main-page.css">
-    <link rel="stylesheet" href="./scss/parallax-header-of-main-page.css">
-    <link rel="stylesheet" href="./scss/items-list-of-main-page.css">
-    <link rel="stylesheet" href="./scss/footer-shop-info-of-main-page.css">
-    <link rel="stylesheet" href="./scss/join-us-of-main-page.css">
-    <link rel="stylesheet" href="./scss/your-bag.css">
+    <link rel="stylesheet" href="./css/header-menu-of-main-page.css">
+    <link rel="stylesheet" href="./css/parallax-header-of-main-page.css">
+    <link rel="stylesheet" href="./css/items-list-of-main-page.css">
+    <link rel="stylesheet" href="./css/footer-shop-info-of-main-page.css">
+    <link rel="stylesheet" href="./css/join-us-of-main-page.css">
+    <link rel="stylesheet" href="./css/your-bag.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Main page</title>
 </head>
@@ -71,56 +71,17 @@
                 <div id="your-bag-close-sign" class="close-sign">&#x2716;</div>
                 <div class="small-box-header">box</div>
                 <div class="your-bag-header">Your Bag</div>
-                <div class="bag-item-container">
-                    <div class="item-container">
-                        <div class="photo-container">
-                            <img src="./images/pexels-brettjordan-917831.jpg" class="photo" />
-                            <div class="photo-note-container">
-                                <div class="item-name">Stylish chair</div>
-                                <div class="item-price">$120.00</div>
-                            </div>
-                        </div>
-                        <div class="items-amount-container">
-                            <div class="items-amount">1</div>
-                            <div class="remove-item">&#x2715;</div>
-                        </div>
-                    </div>
-                    <div class="item-container">
-                        <div class="photo-container">
-                            <img src="./images/pexels-brettjordan-917831.jpg" class="photo" />
-                            <div class="photo-note-container">
-                                <div class="item-name">Stylish chair</div>
-                                <div class="item-price">$120.00</div>
-                            </div>
-                        </div>
-                        <div class="items-amount-container">
-                            <div class="items-amount">1</div>
-                            <div class="remove-item">&#x2715;</div>
-                        </div>
-                    </div>
-                    <div class="item-container">
-                        <div class="photo-container">
-                            <img src="./images/pexels-brettjordan-917831.jpg" class="photo" />
-                            <div class="photo-note-container">
-                                <div class="item-name">Stylish chair</div>
-                                <div class="item-price">$120.00</div>
-                            </div>
-                        </div>
-                        <div class="items-amount-container">
-                            <div class="items-amount">1</div>
-                            <div class="remove-item">&#x2715;</div>
-                        </div>
-                    </div>
-                </div>
+                <div class="bag-item-container"></div>
                 <div class="total-price-wrapper">
                     <div class="total-price">Total:</div>
-                    <div class="total-price">$190.80</div>
+                    <div id="total-sum" class="total-price">$190.80</div>
                 </div>
                 <div class="checkout-button">Checkout</div>
             </div>
         </div>
         <div id="parallax-photo-container" class="parallax-photo-container">
-            <img id="parallax-photo" src="./images/pexels-ionelceban-2580989.jpg" class="photo" alt="wine shop photo" />
+            <img id="parallax-photo" src="./images/pexels-ionelceban-2580989.jpg" class="photo-desktop" alt="wine shop photo" />
+            <img src="./images/pexels-mariapop-342971.jpg" class="photo" alt="wine shop photo" />
             <div id="parallax-header" class="header">Discover<br>winemaking</div>
             <div id="parallax-paragraph" class="paragraph">Every bottle holds a story, every sip unveils a
                 journey—explore the finest

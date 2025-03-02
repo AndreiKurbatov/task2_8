@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.parallax-photo-container {
+    position: relative;
+    overflow: hidden;
+
+    .photo {
+        margin-bottom: 20px;
+        z-index: 0;
+        position: relative;
+        background-size: cover;
+        background-repeat: no-repeat;
+        object-fit: cover;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+    }
+
+    .photo-desktop {
+        display: none;
+    }
+
+    .header {
+        position: absolute;
+        font-family: "EB Garamond", serif;
+        color: rgb(255, 255, 255);
+        top: 65vw;
+        left: 4%;
+        font-size: 11vw;
+        line-height: 0.9;
+        font-weight: 600;
+        transition: transform 0.1s ease-out;
+    }
+
+    .paragraph {
+        position: absolute;
+        font-family: "Poppins", serif;
+        font-size: 3vw;
+        font-weight: 300;
+        color: white;
+        top: 90vw;
+        left: 4%;
+        transition: transform 0.1s ease-out;
+        padding-right: 20px;
+    }
+
+}
+
+@media (min-width: 768px) {
+
+    .parallax-photo-container {
+
+        .photo {
+            display: none;
+        }
+
+        .photo-desktop {
+            display: block;
+            margin-bottom: 20px;
+            z-index: 0;
+            position: relative;
+            background-size: cover;
+            background-repeat: no-repeat;
+            object-fit: cover;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+        }
+
+        .header {
+            top: 13vw;
+            left: 13%;
+            font-size: 9vw;
+            font-weight: 600;
+        }
+
+        .paragraph {
+            font-size: 1.6vw;
+            font-weight: 400;
+            top: 30vw;
+            left: 13%;
+            padding-right: 50vw;
+        }
+
+    }
+}
