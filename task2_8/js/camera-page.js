@@ -1,4 +1,5 @@
-"use strict";
+import { storage } from "./firebase-config.js";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 const startButton = document.getElementById('startButton');
 const cameraContainer = document.getElementById('cameraContainer');
 const cameraView = document.getElementById('cameraView');
@@ -61,7 +62,7 @@ captureBtn.addEventListener('click', () => {
         }, 500);
     }, 100);
     const imageBlob = base64ToBlob(photoDataUrl);
-    //saveBlobAsFile(imageBlob, "photo.jpg");
+    uploadImage(imageBlob);
 });
 function base64ToBlob(base64) {
     const byteCharacters = atob(base64.split(",")[1]);
@@ -72,16 +73,10 @@ function base64ToBlob(base64) {
     const byteArray = new Uint8Array(byteNumbers);
     return new Blob([byteArray], { type: "image/jpeg" });
 }
-/*
-function saveBlobAsFile(blob: Blob, filename: string) {
-    const link = document.createElement("a");
-    const url = URL.createObjectURL(blob);
-
-    link.href = url;
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-}*/ 
+async function uploadImage(file) {
+    const storageRef = ref(storage, `images/${Date.now()}.jpg`);
+    await uploadBytes(storageRef, file);
+    const url = await getDownloadURL(storageRef);
+    console.log("Image URL:", url);
+    return url;
+}
