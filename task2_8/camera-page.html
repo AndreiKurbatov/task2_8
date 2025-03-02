@@ -63,6 +63,25 @@
       </div>
     </div>
   </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getStorage } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBZTw84eiEm9keXZ-r3h85eHcD18-Eh-dw",
+      authDomain: "ai-wine-shop.firebaseapp.com",
+      projectId: "ai-wine-shop",
+      storageBucket: "ai-wine-shop.appspot.com",
+      messagingSenderId: "749998698771",
+      appId: "1:749998698771:web:bb17b6a67d362373b12ae6",
+      measurementId: "G-3YNP4VQ4WV"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    window.firebaseStorage = getStorage(app);
+  </script>
+
+  <script type="module" src="./js/camera-page.js"></script>
 </body>
-<script type="module" src="./js/camera-page.js"></script>
 </html>

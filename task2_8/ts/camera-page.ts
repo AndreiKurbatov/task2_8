@@ -1,5 +1,4 @@
-import { storage } from "./firebase-config.js";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
 const startButton = document.getElementById('startButton') as HTMLElement;
 const cameraContainer = document.getElementById('cameraContainer') as HTMLElement;
@@ -89,9 +88,16 @@ function base64ToBlob(base64: string): Blob {
 }
 
 async function uploadImage(file: Blob) {
-    const storageRef = ref(storage, `images/${Date.now()}.jpg`);
-    await uploadBytes(storageRef, file);
-    const url = await getDownloadURL(storageRef);
-    console.log("Image URL:", url);
-    return url;
+
+    const storageRef = ref(window.firebaseStorage, `images/${Date.now()}.png`);
+
+    try {
+        await uploadBytes(storageRef, file);
+        const url = await getDownloadURL(storageRef);
+        console.log("Image uploaded successfully:", url);
+        return url;
+    } catch (error) {
+        console.error("Error uploading image to Firebase Storage:", error);
+        return null;
+    }
 }
